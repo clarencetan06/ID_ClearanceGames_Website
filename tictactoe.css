@@ -1,0 +1,30 @@
+#game-board {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+  }
+  
+  .cell {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+  }  
+  
+  #win-display {
+    text-align: center;
+    font-size: 36px;
+    margin-top: 20px;
+  }
+  
+  #reset-button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  
