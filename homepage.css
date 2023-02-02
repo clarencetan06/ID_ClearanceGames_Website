@@ -1,0 +1,155 @@
+* {box-sizing: border-box;}
+
+body {
+	font-family: Verdana, sans-serif;
+}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+.header{
+	padding: 20px;
+	text-align: center;
+	background-image: url(images/val.webp);
+	background-size: cover;
+	color: white;
+	font-weight: bold;
+}
+.header h1{
+	font-size: 45px;
+	font-weight: bold;
+}
+.header h4{
+	font-weight: bold;
+}
+.navBar{
+	overflow: hidden;
+	background-color: #333;
+}
+.navBar a {
+	float: left;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 24px 20px;
+	text-decoration: none;
+}
+.navBar a:Hover, .dropdown:hover .dropbtn {
+	background-color: #ddd;
+	color: black;
+}
+/* dropdown socials */
+.dropdown {
+	float: left;
+	overflow: hidden;
+}
+  
+.dropdown .dropbtn {
+	font-size: 16px;  
+	border: none;
+	outline: none;
+	color: white;
+	padding: 0px 16px;
+	background-color: inherit;
+	font-family: inherit;
+	margin: 0;
+}
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+.dropdown-content a {
+	float: none;
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+  
+.dropdown-content a:hover {
+	background-color: #ddd;
+}
+  
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+.slideshow-container {
+max-width: 1000px;
+position: relative;
+margin: auto;
+}	
+.numbertext {
+color: #f2f2f2;
+font-size: 12px;
+padding: 8px 12px;
+position: absolute;
+top: 0;
+}
+.dot {
+height: 15px;
+width: 15px;
+margin: 10px 2px;
+background-color: #bbb;
+border-radius: 50%;
+display: inline-block;
+transition: background-color 0.6s ease;
+}
+.active {
+background-color: #717171;
+}	
+.fade {
+animation-name: fade;
+animation-duration: 1.5s;
+}
+
+@keyframes fade {
+from {opacity: .4}
+to {opacity: 1}
+}
+@media only screen and (max-width: 300px) {
+.text {font-size: 11px}
+}
+@media screen and (max-width: 400px) {
+.navBar a, .dropdown, .dropbtn, .dropdown-content a {
+	float: none;
+	width: 100%;
+}
+}
+/* social bar */
+.socialBar {
+	background-color: black;
+	text-align: center;
+}
+.fa {
+	padding: 20px;
+	font-size: 30px;
+	width: 50px;
+	text-align: center;
+	text-decoration: none;
+	margin: 5px 2px;
+	border-radius: 50%;
+}
+.fa:hover {
+    opacity: 0.7;
+}
+.fa-facebook {
+	background: #3B5998;
+	color: white;
+}
+.fa-twitter {
+	background: #55ACEE;
+	color: white;
+}
+.fa-youtube {
+	background: #bb0000;
+	color: white;
+}
+  
+.fa-instagram {
+	background: #125688;
+	color: white;
+}
