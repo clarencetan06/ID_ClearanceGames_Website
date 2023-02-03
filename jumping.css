@@ -3,45 +3,6 @@
 body {
 	font-family: Verdana, sans-serif;
 }
-.mySlides {display: none;}
-img {vertical-align: middle;}
-/*slideshow*/
-.slideshow-container {
-max-width: 1000px;
-position: relative;
-margin: auto;
-}	
-.numbertext {
-color: #f2f2f2;
-font-size: 12px;
-padding: 8px 12px;
-position: absolute;
-top: 0;
-}
-.dot {
-height: 15px;
-width: 15px;
-margin: 10px 2px;
-background-color: #bbb;
-border-radius: 50%;
-display: inline-block;
-transition: background-color 0.6s ease;
-}
-.active {
-background-color: #717171;
-}	
-.fade {
-animation-name: fade;
-animation-duration: 1.5s;
-}
-
-@keyframes fade {
-from {opacity: .4}
-to {opacity: 1}
-}
-@media only screen and (max-width: 300px) {
-.text {font-size: 11px}
-}
 /*dropdown*/
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap');
 
@@ -242,7 +203,7 @@ a{
 	width: 100%;
 	display: block;
 	min-height: 100vh;
-	background-image: url(images/homepage/backgroundimage.jpg);
+	background-image: url(images/jumping/background.jpg);
 	background-position: center top;
 	background-size: cover;
 }
@@ -318,37 +279,42 @@ a{
 		display: flex;
 	}
 }
-/* social bar */
-.socialBar {
-	background-color: black;
-	text-align: center;
+#gamejump{
+    width: 500px;
+    height: 200px;
+    border: 1px solid white;
+    margin: auto;
 }
-.fa {
-	padding: 20px;
-	font-size: 30px;
-	width: 50px;
-	text-align: center;
-	text-decoration: none;
-	margin: 5px 2px;
-	border-radius: 50%;
+#characterjump{
+    width: 20px;
+    height: 50px;
+    background-color: yellow;
+    position: relative;
+    top: 150px;
 }
-.fa:hover {
-    opacity: 0.7;
+.animate{
+    animation: jump 500ms;
 }
-.fa-facebook {
-	background: #3B5998;
-	color: white;
+@keyframes jump{
+    0%{top: 150px;}
+    30%{top: 100px;}
+    70%{top: 100px;}
+    100%{top: 150px;}
 }
-.fa-twitter {
-	background: #55ACEE;
-	color: white;
+#blockjump{
+    width: 20px;
+    height: 20px;
+    background-color: palegreen;
+    position: relative;
+    top: 130px;
+    left: 480px;
+    animation: block 1s infinite linear;
 }
-.fa-youtube {
-	background: #bb0000;
-	color: white;
+@keyframes block{
+    0%{left: 480px;}
+    100%{left:-40px;}
 }
-  
-.fa-instagram {
-	background: #125688;
-	color: white;
+p{
+    text-align: center;
+    color: white;
 }
