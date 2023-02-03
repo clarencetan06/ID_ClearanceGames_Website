@@ -37,10 +37,13 @@ $(document).ready(function() {
         if (cells.eq(i).text() === cells.eq(i + 1).text() && cells.eq(i + 1).text() === cells.eq(i + 2).text() && cells.eq(i).text() !== "") {
           gameOver = true;
           $("#win-display").text(cells.eq(i).text() + " wins!");
-          if (cells.eq(2).text() === "X"){
+          cells.eq(i).addClass("blink");
+          cells.eq(i + 1).addClass("blink");
+          cells.eq(i + 2).addClass("blink");
+          if (cells.eq(i).text() === "X"){
             playerXWins ++;
           }
-          else if (cells.eq(2).text() === "O"){
+          else if (cells.eq(i).text() === "O"){
             playerOWins ++;
           }
           return;
@@ -52,10 +55,13 @@ $(document).ready(function() {
         if (cells.eq(j).text() === cells.eq(j + 3).text() && cells.eq(j + 3).text() === cells.eq(j + 6).text() && cells.eq(j).text() !== "") {
           gameOver = true;
           $("#win-display").text(cells.eq(j).text() + " wins!");
-          if (cells.eq(2).text() === "X"){
+          cells.eq(j).addClass("blink");
+          cells.eq(j + 3).addClass("blink");
+          cells.eq(j + 6).addClass("blink");
+          if (cells.eq(j).text() === "X"){
             playerXWins ++;
           }
-          else if (cells.eq(2).text() === "O"){
+          else if (cells.eq(j).text() === "O"){
             playerOWins ++;
           }
           return;
@@ -66,10 +72,13 @@ $(document).ready(function() {
       if (cells.eq(0).text() === cells.eq(4).text() && cells.eq(4).text() === cells.eq(8).text() && cells.eq(0).text() !== "") {
         gameOver = true;
         $("#win-display").text(cells.eq(0).text() + " wins!");
-        if (cells.eq(2).text() === "X"){
+        cells.eq(0).addClass("blink");
+        cells.eq(4).addClass("blink");
+        cells.eq(8).addClass("blink");
+        if (cells.eq(0).text() === "X"){
           playerXWins ++;
         }
-        else if (cells.eq(2).text() === "O"){
+        else if (cells.eq(0).text() === "O"){
           playerOWins ++;
         }
         return;
@@ -77,6 +86,9 @@ $(document).ready(function() {
       if (cells.eq(2).text() === cells.eq(4).text() && cells.eq(4).text() === cells.eq(6).text() && cells.eq(2).text() !== "") {
         gameOver = true;
         $("#win-display").text(cells.eq(2).text() + " wins!");
+        cells.eq(2).addClass("blink");
+        cells.eq(4).addClass("blink");
+        cells.eq(6).addClass("blink");
         if (cells.eq(2).text() === "X"){
           playerXWins ++;
         }
@@ -108,6 +120,7 @@ function resetGame() {
   cells.text("");
   gameOver = false;
   filledCells = 0;
+  cells.removeClass("blink");
 }
 
 $("#reset-button").click(function() {

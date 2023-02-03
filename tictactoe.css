@@ -71,3 +71,13 @@ body {
 #player-x-wins span, #player-o-wins, #ties span {
   display: block;
 }
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
