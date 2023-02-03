@@ -9,31 +9,68 @@
         <script src="homepage.js" defer></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style></style>
-
+        
     </head>
     <body>
-        <div class="navBar">
-			<a href="index.html">Home</a>
-			<a href="about.html">About ClearanceGames</a>
-			<a href="gamesmenu.html">Games</a>
-			<div class="dropdown">
-				<button class="dropbtn">Socials 
-				  <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-				  <a href="https://www.facebook.com/PlayVALORANT/" target="_blank">FaceBook</a>
-				  <a href="https://twitter.com/playvalorant" target="_blank">Twitter</a>
-				  <a href="https://www.youtube.com/PlayValorant" target="_blank">Youtube</a>
-				  <a href="https://www.instagram.com/playvalorantofficial/" target="_blank">Instagram</a>
-				</div>
-			</div>
-            <a href="highscore.html">Highscores</a>
-		</div>
+        <!-- header start -->
+        <header class="header">
+            <div class="container">
+            <div class="header-main">
+                <div class="logo">
+                    <a href="#">ClearanceGames</a>
+                </div>
+                <div class="open-nav-menu">
+                    <span></span>
+                </div>
+                <div class="menu-overlay">
+                </div>
+                <!-- navigation menu start -->
+                <nav class="nav-menu">
+                    <div class="close-nav-menu">
+                    <img src="images/homepage/close.svg" alt="close">
+                    </div>
+                    <ul class="menu">
+                    <li class="menu-item">
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="menu-item menu-item-has-children">
+                        <a href="#" data-toggle="sub-menu">Games <i class="plus"></i></a>
+                        <ul class="sub-menu">
+                            <li class="menu-item"><a href="#">Game 1</a></li>
+                            <li class="menu-item"><a href="#">Game 2</a></li>
+                            <li class="menu-item"><a href="#">Game 3</a></li>
+                            <li class="menu-item"><a href="#">Game 4</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">Highscore</a>
+                    </li>
+                    <li class="menu-item menu-item-has-children">
+                        <a href="#" data-toggle="sub-menu">Socials <i class="plus"></i></a>
+                        <ul class="sub-menu">
+                            <li class="menu-item"><a href="#">page 1</a></li>
+                            <li class="menu-item"><a href="#">page 2</a></li>
+                            <li class="menu-item"><a href="#">page 3</a></li>
+                            <li class="menu-item"><a href="#">page 4</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">Feedback</a>
+                    </li>
+                    </ul>
+                </nav>
+                <!-- navigation menu end -->
+            </div>
+            </div>
+        </header>
+        <!-- header end -->
+    <section class="home-section">
         <div class="header">
-			<h1>CLEARANCEGAMES</h1>
-			<h4>A free 5v5 character-based tactical shooter game</h4>
+            <br>
+            <br>
+            <br>
+            <br>
             <div class="slideshow-container">
-
                 <div class="mySlides fade">
                     <div class="numbertext">1 / 5</div>
                     <img src="images/homepage/download1.jpg" style="width:100%">
@@ -48,20 +85,20 @@
                     <div class="numbertext">3 / 5</div>
                     <img src="images/homepage/download3.jpg" style="width:100%">
                 </div>
-
+    
                 <div class="mySlides fade">
                     <div class="numbertext">4 / 5</div>
                     <img src="images/homepage/download4.jpg" style="width:100%">
                 </div>
-
+    
                 <div class="mySlides fade">
                     <div class="numbertext">5 / 5</div>
                     <img src="images/homepage/download5.png" style="width:100%">
                 </div>
-
+    
             </div>
             <br>
-
+    
             <div style="text-align:center">
                 <span class="dot"></span> 
                 <span class="dot"></span> 
@@ -69,12 +106,14 @@
                 <span class="dot"></span> 
                 <span class="dot"></span>
             </div>
-        </div>
-        <div class="socialBar">
-			<a href="https://www.facebook.com/PlayVALORANT/" target="_blank" class="fa fa-facebook"></a>
-			<a href="https://twitter.com/playvalorant" target="_blank" class="fa fa-twitter"></a>
-			<a href="https://www.youtube.com/PlayValorant" target="_blank" class="fa fa-youtube"></a>
-			<a href="https://www.instagram.com/playvalorantofficial/" target="_blank" class="fa fa-instagram"></a>
-		</div>
+        </div>    
+    </section>  
+    <div class="socialBar">
+        <a href="https://www.facebook.com/PlayVALORANT/" target="_blank" class="fa fa-facebook"></a>
+        <a href="https://twitter.com/playvalorant" target="_blank" class="fa fa-twitter"></a>
+        <a href="https://www.youtube.com/PlayValorant" target="_blank" class="fa fa-youtube"></a>
+        <a href="https://www.instagram.com/playvalorantofficial/" target="_blank" class="fa fa-instagram"></a>
+    </div>
+    <script src="homepage2.js"></script>
     </body>
 </html>
