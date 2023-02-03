@@ -1,30 +1,73 @@
+body {
+  background-image: url(fire-pattern.png);
+  background-color: black;
+  background-repeat: repeat;
+}
+
 #game-board {
-    display: flex;
-    flex-wrap: wrap;
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-  }
-  
-  .cell {
-    width: 100px;
-    height: 100px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 36px;
-  }  
-  
-  #win-display {
-    text-align: center;
-    font-size: 36px;
-    margin-top: 20px;
-  }
-  
-  #reset-button {
-    display: block;
-    margin: 0 auto;
-    margin-top: 20px;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  padding-top: 5rem;
+  background-color: black;
+  background-image: url(fire-pattern.png);
+  background-repeat: repeat;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  color: #333;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+}  
+
+#win-display {
+  text-align: center;
+  font-size: 36px;
+  margin-top: 7rem;
+  font-family: Arial, sans-serif;
+  color: #FFFF;
+  padding: 20px;
+}
+
+#reset-button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  background-color: red;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: none;
+  margin-top: 30px;
+}
+
+#reset-button:hover {
+  background-color: darkred;
+}
+
+.cell:hover {
+  background-color: #ccc;
+}
+
+#player-x-wins, #player-o-wins, #Tie {
+  text-align: center;
+}
+
+#player-x-wins span, #player-o-wins, #Tie span {
+  display: block;
+}

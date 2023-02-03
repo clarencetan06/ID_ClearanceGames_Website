@@ -10,11 +10,16 @@
         <script src="homepage.js" defer></script>
         <script src="tictactoe.js" defer></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href=
+        "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src=
+        "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">
+        </script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style></style>
 
     </head>
-    <body>
+    <body style="background-color:black;">
         <div class="navBar">
 			<a href="index.html">Home</a>
 			<a href="about.html">About ClearanceGames</a>
@@ -44,6 +49,8 @@
             <div class="cell"></div>
         </div>
         <div id="win-display"></div>
+        <div id="player-x-wins">Player X wins: <span>0</span></div>
+        <div id="player-o-wins">Player O wins: <span>0</span></div>
         <button id="reset-button">Reset</button>  
     </body>
 </html>
