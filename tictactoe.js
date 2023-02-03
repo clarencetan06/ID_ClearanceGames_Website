@@ -1,25 +1,26 @@
 $(document).ready(function() {
   var turn = "X";
-var cells = $(".cell");
-var gameOver = false;
-var winDisplay = $("#win-display");
-var modal = $("#win-modal");
-var closeButton = $(".close");
-var resetButton = $("#reset-button");
-var playerXWins = 0;
-var playerOWins = 0;
+  var cells = $(".cell");
+  var gameOver = false;
+  var winDisplay = $("#win-display");
+  var modal = $("#win-modal");
+  var closeButton = $(".close");
+  var resetButton = $("#reset-button");
+  var playerXWins = 0;
+  var playerOWins = 0;
+  var ties = 0;
 
-$(".cell").click(function() {
-  if (!gameOver && $(this).text() === "") {
-    $(this).text(turn);
-    checkForWinner();
-    if (turn === "X") {
-      turn = "O";
-    } else {
-      turn = "X";
+  $(".cell").click(function() {
+    if (!gameOver && $(this).text() === "") {  // Check if the cell is empty
+      $(this).text(turn);
+      checkForWinner();
+      if (turn === "X") {
+        turn = "O";
+      } else {
+        turn = "X";
+      }
     }
-  }
-});
+  });
 
   closeButton.click(function() {
     modal.hide();
@@ -36,6 +37,12 @@ $(".cell").click(function() {
         if (cells.eq(i).text() === cells.eq(i + 1).text() && cells.eq(i + 1).text() === cells.eq(i + 2).text() && cells.eq(i).text() !== "") {
           gameOver = true;
           $("#win-display").text(cells.eq(i).text() + " wins!");
+          if (cells.eq(2).text() === "X"){
+            playerXWins ++;
+          }
+          else if (cells.eq(2).text() === "O"){
+            playerOWins ++;
+          }
           return;
         }
       }
@@ -45,6 +52,12 @@ $(".cell").click(function() {
         if (cells.eq(j).text() === cells.eq(j + 3).text() && cells.eq(j + 3).text() === cells.eq(j + 6).text() && cells.eq(j).text() !== "") {
           gameOver = true;
           $("#win-display").text(cells.eq(j).text() + " wins!");
+          if (cells.eq(2).text() === "X"){
+            playerXWins ++;
+          }
+          else if (cells.eq(2).text() === "O"){
+            playerOWins ++;
+          }
           return;
         }
       }
@@ -53,38 +66,48 @@ $(".cell").click(function() {
       if (cells.eq(0).text() === cells.eq(4).text() && cells.eq(4).text() === cells.eq(8).text() && cells.eq(0).text() !== "") {
         gameOver = true;
         $("#win-display").text(cells.eq(0).text() + " wins!");
+        if (cells.eq(2).text() === "X"){
+          playerXWins ++;
+        }
+        else if (cells.eq(2).text() === "O"){
+          playerOWins ++;
+        }
         return;
       }
       if (cells.eq(2).text() === cells.eq(4).text() && cells.eq(4).text() === cells.eq(6).text() && cells.eq(2).text() !== "") {
         gameOver = true;
         $("#win-display").text(cells.eq(2).text() + " wins!");
+        if (cells.eq(2).text() === "X"){
+          playerXWins ++;
+        }
+        else if (cells.eq(2).text() === "O"){
+          playerOWins ++;
+        }
         return;
       }
-      // Check if all cells are filled and there's no winner
-      var filledCells = 0;
-      for (var i = 0; i < 9; i++) {
-        if (cells.eq(i).text() !== "") {
-          filledCells++;
-        }
-      }
+      
+       // Check if all cells are filled and there's no winner
+  var filledCells = 0;
+  for (var i = 0; i < 9; i++) {
+    if (cells.eq(i).text() !== "") {
+      filledCells++;
+    }
+  }
   
-      if (filledCells === 9 && !gameOver) {
-        $("#win-display").text("Tie");
-      }
-      if (gameOver && winDisplay.text().includes("X wins")) {
-        playerXWins++;
-      } else if (gameOver && winDisplay.text().includes("O wins")) {
-        playerOWins++;
-      }
-}
+  if (filledCells === 9 && !gameOver) {
+    $("#win-display").text("Tie");
+    ties ++;
+  }
+  $("#player-x-wins").text("Player X: " + playerXWins);
+  $("#player-o-wins").text("Player O: " + playerOWins);
+  $("#ties").text("Tie: " + ties);
+  }
 
 function resetGame() {
-  turn = "X";
+  turn = turn === "X" ? "O" : "X";  // Change the order of who starts first
   cells.text("");
   gameOver = false;
-  winDisplay.text("");
-  $("#player-x-wins").text("Player X wins: " + playerXWins);
-  $("#player-o-wins").text("Player O wins: " + playerOWins);
+  filledCells = 0;
 }
 
 $("#reset-button").click(function() {

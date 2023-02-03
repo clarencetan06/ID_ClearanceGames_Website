@@ -64,10 +64,10 @@ body {
   background-color: #ccc;
 }
 
-#player-x-wins, #player-o-wins, #Tie {
+#player-x-wins, #player-o-wins, #ties {
   text-align: center;
 }
 
-#player-x-wins span, #player-o-wins, #Tie span {
+#player-x-wins span, #player-o-wins, #ties span {
   display: block;
 }
