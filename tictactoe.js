@@ -127,4 +127,4 @@ $("#reset-button").click(function() {
     resetGame();
     $("#win-display").text("");
   });
-});
+})

@@ -66,6 +66,7 @@ body {
 
 #player-x-wins, #player-o-wins, #ties {
   text-align: center;
+  color: white;
 }
 
 #player-x-wins span, #player-o-wins, #ties span {
