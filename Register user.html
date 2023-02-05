@@ -20,18 +20,15 @@
     </head>
     <body>
         <div class="mb-5">
-            <h3 class="mb-3">Login</h3>
+            <h3 class="mb-3">Sign up</h3>
             <input type="text" placeholder="Fullname" id="nameInp" class="form-control mb-3">
-            <input type="text" placeholder="Password" id="passInp" class="form-control mb-3">
-            <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                <label class="custom-control-label" for="customSwitch1">keep me logged in</label>
-              </div>
-            <button type="text" id="sub_btn" class="btn w-100 btn-outline-primary mb-3">login</button>
-            <a href="create page.html" class="badge badge-secondary py-1 w-100">Create an account?</a>
+            <input type="password" placeholder="Password" id="passInp" class="form-control mb-3" required>
+            <button type="text" id="sub_btn" class="btn w-100 btn-outline-primary mb-3">Sign up</button>
+            <a href="login.html" class="badge badge-secondary py-1 w-100">Already have an account?</a>
         </div>
 
         <script type="module">
+            
             // Import the functions you need from the SDKs you need
             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
             import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
@@ -56,52 +53,76 @@
 
             const db = getDatabase();
 
+// References
+
             const name = document.getElementById('nameInp');
             const pass = document.getElementById('passInp');
             const submit = document.getElementById('sub_btn');
 
-            function AuthenticateUser(){
-                const dbRef = ref(db)
-                get(child(dbRef, "Userlist/" + name.value)).then((snapshot) =>{
-                    if(snapshot.exists()){
-                        if(pass.value === snapshot.val().password){
-                            login(snapshot.val());
-                        }
+            function IsEmptyOrSpaces(str){
+                return str === null || str.match(/^ *$/) !== null;
+             }
 
-                        else{
-                            alert("Name or password is invalid");
-                        }
-                    }
-                    else{
-                        alert("Name or password is invalid");
-                    }
+            function Validation(){
+                let nameregex = /^[a-zA-z]+$/;
+                let passregex = /^[a-zA-Z0-9]+$/;
 
-                });
+                if (IsEmptyOrSpaces(name.value) || IsEmptyOrSpaces(pass.value)){
+                    alert("You cannot leave any fields empty")
+                    return false;
+                }
+
+                if(!nameregex.test(name.value)){
+                    alert("enter a valid name");
+                    return false;
+                }
+
+                if(!passregex.test(pass.value)){
+                    alert("enter a valid password");
+                    return false;
+                }
+
+                return true;
             }
             
-            // does not work for some reason
-            // function decPass(){
-            //     var pass12 = CryptoJS.AES.decrypt(dbpass, pass.value);
-            //     return pass12.toString(CryptoJS.enc.Utf8);
+            function RegisterUser(){
+                if (!Validation()){
+                    return;
+                };
+                const dbRef = ref(db);
+
+                get(child(dbRef, "Userlist/" + name.value)).then((snapshot) =>{
+                    if(snapshot.exists()){
+                        alert("Account already exists");
+                    }
+
+                    else{
+                        set(ref(db, "Userlist/" + name.value),
+                        {
+                            fullname: name.value,
+                            password: pass.value
+                        })
+                        .then(()=>{
+                            alert("User registered successfully")
+                        })
+                        .catch((error)=>{
+                            alert("error"+error);
+                        })
+                    }
+                });
+            }
+
+            // cant do decPass so encPass will be commented out
+            // function encPass(){
+            //     var pass12 = CryptoJS.AES.encrypt(pass.value, pass.value);
+            //     return pass12.toString();
             // }
 
-            function login(user){
-                let keepLoggedIn = document.getElementById('customSwitch1').checked;
 
-                if (!keepLoggedIn){
-                    sessionStorage.setItem('user', JSON.stringify(user));
-                    window.location = "TicTacToe.html";
-                }
-                else {
-                    localStorage.setItem('keepLoggedIn', 'yes');
-                    localStorage.setItem('user', JSON.stringify(user));
-                    window.location = "TicTacToe.html";
-                }
-            }
 
             document.getElementById("sub_btn").addEventListener("click", function(e) {
             e.preventDefault();
-            submit.addEventListener('click',AuthenticateUser())
+            submit.addEventListener('click',RegisterUser())
             })
           </script>
     </body>
