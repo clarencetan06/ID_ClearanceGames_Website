@@ -104,16 +104,16 @@
             // return;
             // };
 
-            // window.old_alert = window.alert;
-            // window.alert = function(message) { 
-            // var score = message.split(" ")[3];
+            window.old_alert = window.alert;
+            window.alert = function(message) { 
+            var score = message.split(" ")[3];
             
-            // if (score) {
-            // CheckCounter(score, name);
-            // }
-            // // still show the original alert
-            // old_alert(message); 
-            // };
+            if (score) {
+            CheckCounter(score, name);
+            }
+            // still show the original alert
+            old_alert(message); 
+            };
 
             function CheckCounter(score, name) {
                 if (!name) {
