@@ -1,0 +1,65 @@
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 0px;
+}
+
+/* Adds a margin bottom of 5 units to the element */
+.mb-5 {
+    margin-bottom: 3rem !important;
+}
+
+/* Adds a margin bottom of 3 units to the element */
+.mb-3 {
+    margin-bottom: 1.5rem !important;
+}
+
+/* Makes the input field have a solid border and a gray background */
+.form-control {
+    display: block;
+    width: 300px;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Styles the button with a border and primary color background on hover */
+.btn-outline-primary {
+    color: #007bff;
+    background-color: transparent;
+    background-image: none;
+    border-color: #007bff;
+}
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* Makes the button take up the full width of its parent container */
+.w-100 {
+    width: 100%;
+}
+
+/* Styles the badge with a secondary background color */
+.badge-secondary {
+    color: #fff;
+    background-color: #6c757d;
+}
+
+/* Adds padding to the top and bottom of the element */
+.py-1 {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+}
