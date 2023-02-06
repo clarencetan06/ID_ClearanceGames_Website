@@ -24,54 +24,102 @@
             <p>Objective: Avoid Hitting the Block</p>
             <p>Controls: Left Mouse Button to Jump</p>
             <p>Score: <span id="scoreSpan"></span></p>
+            <script>
+                var count = 0;
+                var character = document.getElementById("characterjump");
+                var block = document.getElementById("blockjump");
+                var counter=0;
+
+                function jump(){
+                    if(character.classList == "animate"){return}
+                    character.classList.add("animate");
+                    setTimeout(function(){
+                        character.classList.remove("animate");
+                    },500);
+                }
+
+                var checkDead = setInterval(function() {
+                    let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
+                    let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
+                    if(blockLeft<20 && blockLeft>-20 && characterTop>=130){
+                        block.style.animation = "none";
+                        alert("Game Over. score: "+Math.floor(counter/100));
+                        count = Math.floor(counter/100);
+                        counter=0;
+                        block.style.animation = "block 1s infinite linear";
+                    }else{
+                        counter++;
+                        document.getElementById("scoreSpan").innerHTML = Math.floor(counter/100);
+                    }
+                }, 10);
+            </script>
             <script type="module">
                 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
                 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
                 
                 const firebaseConfig = {
-                  apiKey: "AIzaSyB8IH1fwswVdHjd_WKwzwlkWvbOgCkzY9M",
-                  authDomain: "infoirma-828ae.firebaseapp.com",
-                  databaseURL: "https://infoirma-828ae-default-rtdb.asia-southeast1.firebasedatabase.app",
-                  projectId: "infoirma-828ae",
-                  storageBucket: "infoirma-828ae.appspot.com",
-                  messagingSenderId: "516090427000",
-                  appId: "1:516090427000:web:cce9d3549ef62628fb9f8d",
-                  measurementId: "G-V20BLGBPMJ"
-                };
-                
-                
-                const app = initializeApp(firebaseConfig);
-                const analytics = getAnalytics(app);
-                
-                import { getDatabase, ref, set, child, get, update, remove }
-                    from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
-                
-                const db = getDatabase();
-                
-                let currentUser = null;
+                apiKey: "AIzaSyB8IH1fwswVdHjd_WKwzwlkWvbOgCkzY9M",
+                authDomain: "infoirma-828ae.firebaseapp.com",
+                databaseURL: "https://infoirma-828ae-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "infoirma-828ae",
+                storageBucket: "infoirma-828ae.appspot.com",
+                messagingSenderId: "516090427000",
+                appId: "1:516090427000:web:cce9d3549ef62628fb9f8d",
+                measurementId: "G-V20BLGBPMJ"
+            };
 
-                if (localStorage.getItem('user') !== null){
-                    currentUser = JSON.parse(sessionStorage.getItem('user'))
-                }
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+
+            import { getDatabase, ref, set, child, get, update, remove }
+                from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
                 
-                if (localStorage.getItem('user') !== null){
-                    currentUser = JSON.parse(sessionStorage.getItem('user'))
+            const db = getDatabase();
+            var currentUser = null;
+            var name = null;
+            console.log(currentUser);
+
+            if (localStorage.getItem("user") !== null) {
+                currentUser = JSON.parse(localStorage.getItem("user"));
+                name = currentUser.fullname;
+                console.log(name);
+            }
+
+            if (sessionStorage.getItem("user") !== null) {
+                currentUser = JSON.parse(sessionStorage.getItem("user"));
+                name = currentUser.fullname;
+                console.log(name);
+            }
+
+            CheckCounter(5, name);
+
+            function CheckCounter(score, name) {
+                if (!name) {
+                    console.error("Name is undefined");
+                    return;
                 }
-                
-                function CheckCounter(){
-                    const dbRef = ref(db)
-                    get(child(dbRef, "Userlist/" + currentUser.value)).then((snapshot) =>{
-                        if(snapshot.exists()){
-                            if (scoreSpan > snapshot.val().score1){
-                                update(ref(db, "Userlist/" + currentUser.value),{
-                                    score1: scoreSpan
-                                })
-                            }
+
+                const dbRef = ref(db, "Userlist");
+                console.log(score, name);
+                get(child(dbRef, name)).then(snapshot => {
+                    if (snapshot.exists()) {
+                        console.log("User exists in Userlist");
+                        if (snapshot.val().score1 <= score) {
+                            console.log("Updating score:", snapshot.val().score1, "to", score);
+                            update(ref(db, "Userlist/" + name), {
+                                score1: score
+                            }).then(() => console.log("Score updated"))
+                            .catch(error => console.error("Error updating score:", error));
+                        } else {
+                            console.log("Score is not less than or equal to", score);
                         }
-                    })
-                }
+                    } else {
+                        console.error("User does not exist in Userlist");
+                    }
+                }).catch(error => console.error("Error getting Userlist:", error));
+            }
+        
                 </script>
         </section>
-        <script src="jumping.js" defer></script>
     </body>
 </html>
