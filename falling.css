@@ -12,7 +12,6 @@ body {
 	width: 100%;
 	display: block;
 	min-height: 100vh;
-	background-image: url(images/jumping/background.jpg);
 	background-position: center top;
 	background-size: cover;
 }
@@ -48,4 +47,10 @@ body {
     position: relative;
     top: 100px;
     margin-top: -20px;
+}
+p{
+    text-align: center;
+}
+h1{
+    text-align: center;
 }
