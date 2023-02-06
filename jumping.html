@@ -47,6 +47,7 @@
                         count = Math.floor(counter/100);
                         counter=0;
                         block.style.animation = "block 1s infinite linear";
+                        
                     }else{
                         counter++;
                         document.getElementById("scoreSpan").innerHTML = Math.floor(counter/100);
@@ -73,7 +74,7 @@
 
             import { getDatabase, ref, set, child, get, update, remove }
                 from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
-                
+
             const db = getDatabase();
             var currentUser = null;
             var name = null;
@@ -91,7 +92,16 @@
                 console.log(name);
             }
 
-            CheckCounter(5, name);
+            window.alert = function(message) {
+            var score = message.split(" ")[3];
+            console.log(score);
+
+            if (score) {
+                CheckCounter(score, name);
+            }
+            // alert("Game Over. score: "+Math.floor(counter/100));
+            return;
+            };
 
             function CheckCounter(score, name) {
                 if (!name) {
@@ -104,7 +114,7 @@
                 get(child(dbRef, name)).then(snapshot => {
                     if (snapshot.exists()) {
                         console.log("User exists in Userlist");
-                        if (snapshot.val().score1 <= score) {
+                        if (snapshot.val().score1 < score) {
                             console.log("Updating score:", snapshot.val().score1, "to", score);
                             update(ref(db, "Userlist/" + name), {
                                 score1: score
