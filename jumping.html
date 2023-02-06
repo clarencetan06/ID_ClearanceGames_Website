@@ -21,7 +21,56 @@
                 <div id="characterjump"></div>
                 <div id="blockjump"></div>
             </div>
+            <p>Objective: Avoid Hitting the Block</p>
+            <p>Controls: Left Mouse Button to Jump</p>
             <p>Score: <span id="scoreSpan"></span></p>
+            <script type="module">
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+                import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+                
+                const firebaseConfig = {
+                  apiKey: "AIzaSyB8IH1fwswVdHjd_WKwzwlkWvbOgCkzY9M",
+                  authDomain: "infoirma-828ae.firebaseapp.com",
+                  databaseURL: "https://infoirma-828ae-default-rtdb.asia-southeast1.firebasedatabase.app",
+                  projectId: "infoirma-828ae",
+                  storageBucket: "infoirma-828ae.appspot.com",
+                  messagingSenderId: "516090427000",
+                  appId: "1:516090427000:web:cce9d3549ef62628fb9f8d",
+                  measurementId: "G-V20BLGBPMJ"
+                };
+                
+                
+                const app = initializeApp(firebaseConfig);
+                const analytics = getAnalytics(app);
+                
+                import { getDatabase, ref, set, child, get, update, remove }
+                    from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+                
+                const db = getDatabase();
+                
+                let currentUser = null;
+
+                if (localStorage.getItem('user') !== null){
+                    currentUser = JSON.parse(sessionStorage.getItem('user'))
+                }
+                
+                if (localStorage.getItem('user') !== null){
+                    currentUser = JSON.parse(sessionStorage.getItem('user'))
+                }
+                
+                function CheckCounter(){
+                    const dbRef = ref(db)
+                    get(child(dbRef, "Userlist/" + currentUser.value)).then((snapshot) =>{
+                        if(snapshot.exists()){
+                            if (scoreSpan > snapshot.val().score1){
+                                update(ref(db, "Userlist/" + currentUser.value),{
+                                    score1: scoreSpan
+                                })
+                            }
+                        }
+                    })
+                }
+                </script>
         </section>
         <script src="jumping.js" defer></script>
     </body>
