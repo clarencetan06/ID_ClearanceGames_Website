@@ -64,6 +64,14 @@ var blocks = setInterval(function(){
         clearInterval(blocks);
         location.reload();
     }
+    else{
+        if(counter - 9 <0){
+            document.getElementById("scoreSpan").innerHTML = 0;
+        }
+        else{
+            document.getElementById("scoreSpan").innerHTML = Math.floor(counter-9)
+        }
+    }
     for(var i = 0; i < currentBlocks.length;i++){
         let current = currentBlocks[i];
         let iblock = document.getElementById("block"+current);
