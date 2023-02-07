@@ -1,0 +1,113 @@
+*{
+    padding: 0;
+    margin: 0;
+    outline: none;
+    overflow-x: none;
+}
+body{
+    max-width: 300px;
+    margin: auto;
+    background-image: url(images/colour/purple.png);
+}
+.bottom{
+    display: flex;
+}
+.color{
+    width: 150px;
+    height: 150px;
+    transition: transform 300ms;
+}
+.color:hover{
+    transform: scale(0.9);
+}
+.blue{
+    background-color: blue;
+}
+.red{
+    background-color: red;
+}
+.green{
+    background-color: green;
+}
+.yellow{
+    background-color: yellow;
+}
+
+.top{
+    margin-top: 1rem;
+    width: 300px;
+    height: 200px;
+    display: grid;
+    text-align: center;
+}
+.colorText{
+    font: 3rem sans-serif; 
+    display: none;
+}
+.color1{
+    
+}
+.color2{
+    
+}
+#time{
+    position: absolute;
+/*    bottom: 20px;*/
+    text-align: center;
+    width: 300px;
+    font: 3rem sans-serif; 
+}
+#correct{
+    position: absolute;
+    color: lawngreen;
+    text-shadow: 0px 0px 10px black;
+    font: 3rem sans-serif; 
+}
+#checkmark, #wrong{
+    pointer-events: none;
+    position: absolute;
+    width: 10%;
+    left: 45%;
+    top: 10%;
+    opacity: 0;
+}
+@media only screen and (max-width: 600px){
+    #checkmark, #wrong{
+        position: absolute;
+        width: 50%;
+        left: 25%;
+        top: 10%;
+    }
+}
+
+.fadeAway{
+    animation: fadeAway 500ms;
+}
+@keyframes fadeAway{
+    0%{opacity: 1}
+    50%{opacity: 1}
+    100%{opacity: 0}
+}
+#start{
+    font-size: 2rem;
+    height: 100px;
+    padding: 0.5rem 2rem;
+    border: 3px solid black;
+    border-radius: 0.3rem;
+    margin: 1rem auto;
+    display: block;
+}
+#start{
+    background-color: lightgreen;
+}
+#start:hover{
+    background-color: yellow; 
+}
+h1{
+    text-align: center;
+    color: white;
+}
+p{
+    text-align: center;
+    color: white;
+}

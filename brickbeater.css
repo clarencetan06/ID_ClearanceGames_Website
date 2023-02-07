@@ -1,0 +1,104 @@
+:root{
+    --fourhundred: 400px;
+    --fourhundredminustwenty: 380px;
+    --fourhundredhalf: 200px;
+}
+*{
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+.game{
+    border: 3px solid white;
+    height: 600px;
+    width: var(--fourhundred);
+    margin: auto;
+}
+.user{
+    background-color: blue;
+    width: 100px;
+    height: 20px;
+/*    top: 380px;*/
+    left: 150px;
+    position: relative;
+}
+.ball{
+    width: 20px;
+    height: 20px;
+    background-color: yellow;
+    border-radius: 50%;
+    position: relative;
+    top:560px;
+}
+.animation{
+    animation:slideY 5s infinite linear;
+}
+.balldiv{
+    width: var(--fourhundred);
+    height: 580px;
+    position: relative;
+    margin: auto;
+    animation:slideX 1.0284s infinite linear;
+}
+@keyframes slideX{
+    0%{left:0px;}
+    50%{left:var(--fourhundredminustwenty);}
+    100%{left:0px;}
+}
+@keyframes slideY{
+    0%{top:560px;}
+    50%{top:0px;}
+    100%{top:560px;}
+}
+.left{
+    z-index: 100;
+    width: var(--fourhundredhalf);
+    position: absolute;
+    height: 600px;
+}
+.right{
+    z-index: 100;
+    width: var(--fourhundredhalf);
+    margin-left: 200px;
+    position: absolute;
+    height: 600px;
+}
+button{
+    font-size: 2rem;
+    padding: 0.5rem 2rem;
+    border: 3px solid black;
+    border-radius: 0.3rem;
+    margin: 1rem auto;
+    display: none;
+}
+button:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 399px){
+   .game,.left,.right{
+        height: 400px;
+    } 
+    @keyframes slideY{
+        0%{top:360px;}
+        50%{top:0px;}
+        100%{top:360px;}
+    }
+    .ball{
+        top:360px;
+    }
+    .balldiv{
+        height: 380px;
+    }
+}
+body{
+    background-image: url(images/brickbeater/brick.jpg);
+	background-position: center top;
+	background-size: cover;
+}
+h1, p{
+    text-align: center;
+    color:aqua
+}

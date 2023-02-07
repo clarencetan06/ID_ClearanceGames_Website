@@ -5,9 +5,10 @@
 #game{
     width: 400px;
     height: 500px;
-    border: 1px solid black;
+    border: 3px solid black;
     margin: auto;
     overflow: hidden;
+    background-color: white;
 }
 #block{
     width: 50px;
@@ -45,4 +46,9 @@ p{
 h1{
     text-align: center;
     color: black;
+}
+body{
+    background-position: center top;
+	background-size: cover;
+    background-image: url(images/flappybird/blue.avif);
 }

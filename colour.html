@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>ClearanceGames</title>
+		<link href="colour.css" rel="stylesheet" type="text/css" />
+        <link rel="icon" href="fav.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style></style>
+        
+    </head>
+    <body>
+        <h1>Brain Teaser</h1>
+        <img src="images/colour/correct.svg" alt="" id="checkmark">
+        <img src="images/colour/incorrect.svg" alt="" id="wrong">
+        <div class="top">
+            <button id="start" onclick="startGame()">Start</button>
+            <div id="color1" class="colorText color1"></div>
+            <div id="color2" class="colorText color2"></div>
+        </div>
+        <div class="bottom">
+            <div class="row">
+                <div id="Blue" class="color blue"></div>
+                <div id="Red" class="color red"></div>
+            </div>
+            <div class="row">
+                <div id="Green" class="color green"></div>
+                <div id="Yellow" class="color yellow"></div>
+            </div>
+        </div>
+        <span id="correct"></span>
+        <span id="time"></span>
+        <br><br><br>
+        <p>Objective: Choose the colour that is common in both words and colours of the words shown above.<br>
+            Correct Answer = 1 point
+        </p>
+        <script src="colour.js"></script>
+    </body>
+</html>

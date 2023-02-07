@@ -18,9 +18,10 @@ body {
 #game{
     width: 400px;
     height: 500px;
-    border: 1px solid black;
+    border: 3px solid black;
     margin: auto;
     overflow: hidden;
+    background-color: white;
 }
 #character{
     width: 20px;
@@ -53,4 +54,9 @@ p{
 }
 h1{
     text-align: center;
+}
+body{
+    background-position: center top;
+	background-size: cover;
+    background-image: url(images/falling/dark.jpg);
 }
