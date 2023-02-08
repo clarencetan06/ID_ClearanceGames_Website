@@ -3,12 +3,18 @@ var hole = document.getElementById("hole");
 var character = document.getElementById("character");
 var jumping = 0;
 var counter = 0;
+var firstRun = true;
 
 hole.addEventListener('animationiteration', () => {
-    document.getElementById("scoreSpan").innerHTML = counter;
     var random = -((Math.random()*300)+150);
     hole.style.top = random + "px";
     counter++;
+    if (firstRun == true){
+        document.getElementById("scoreSpan").innerHTML = counter;
+    }
+    else{
+        document.getElementById("scoreSpan").innerHTML = counter - 1;
+    }
 });
 setInterval(function(){
     var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
@@ -19,9 +25,13 @@ setInterval(function(){
     var holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
     var cTop = -(500-characterTop);
     if((characterTop>480)||((blockLeft<20)&&(blockLeft>-50)&&((cTop<holeTop)||(cTop>holeTop+130)))){
+        if (firstRun == true){
+            counter = counter + 1;
+        }
         alert("Game over. Score: "+(counter-1));
         character.style.top = 100 + "px";
-        counter=0;
+        counter = 0;
+        firstRun = false;
     }
 },10);
 
