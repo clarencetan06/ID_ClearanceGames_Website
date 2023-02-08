@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Highscore</title>
+		<link href="homepage.css" rel="stylesheet" type="text/css" />
+        <link href="normalize.css" rel="stylesheet" type="text/css" />
+        <link href="highscore.css" rel="stylesheet" type="text/css" />
+        <!-- <script src="slideshow.js" defer></script> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.0/lottie_light.min.js"></script>
+        <style></style>
+        
+<style>
+</style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-main">
+                <div class="logo">
+                    <a href="#">ClearanceGames</a>
+                </div>
+                <div class="open-nav-menu">
+                    <span></span>
+                </div>
+                <div class="menu-overlay">
+                </div>
+                <!-- navigation menu start -->
+                <nav class="nav-menu">
+                    <div class="close-nav-menu">
+                    <img src="images/homepage/close.svg" alt="close">
+                    </div>
+                    <ul class="menu">
+                    <li class="menu-item">
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="menu-item menu-item-has-children">
+                        <a href="#" data-toggle="sub-menu">Games <i class="plus"></i></a>
+                        <ul class="sub-menu">
+                            <li class="menu-item"><a href="#">Game 1</a></li>
+                            <li class="menu-item"><a href="#">Game 2</a></li>
+                            <li class="menu-item"><a href="#">Game 3</a></li>
+                            <li class="menu-item"><a href="#">Game 4</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">Highscore</a>
+                    </li>
+                    <li class="menu-item menu-item-has-children">
+                        <a href="#" data-toggle="sub-menu">Socials <i class="plus"></i></a>
+                        <ul class="sub-menu">
+                            <li class="menu-item"><a href="#">page 1</a></li>
+                            <li class="menu-item"><a href="#">page 2</a></li>
+                            <li class="menu-item"><a href="#">page 3</a></li>
+                            <li class="menu-item"><a href="#">page 4</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="#">Feedback</a>
+                    </li>
+                    <li class="mx-1 menu-item">
+                        <a id="userlink" class="nav-link" href="#">Name</a>
+                    </li>
+
+                    <li class="mx-1 menu-item">
+                        <a id="signoutlink" class="nav-link" href="#">Sign out</a>
+                    </li>
+                    </ul>
+                </nav>
+                <!-- navigation menu end -->
+            </div>
+        </div>
+    </header>
+    <div style="margin-top:84px;">
+        <div class="image-container">
+            <div class="text">Jumping</div>
+                <div class="text2" style="display:flex;justify-content: center;">Highscore: <p id="score1">0</p></div>
+            </div>
+        </div>
+        <div class="image-container2">
+            <div class="text3">Flappy bird</div>
+                <div class="text4" style="display:flex;justify-content: center;">Highscore: <p id="score2">0</p></div>
+            </div>
+        </div>
+        <div class="image-container3">
+            <div class="text">Stacker</div>
+                <div class="text2" style="display:flex;justify-content: center;">Highscore: <p id="score3">0</p></div>
+            </div>
+        </div>
+        <div class="image-container4">
+            <div class="text3">Brick Beater</div>
+                <div class="text4" style="display:flex;justify-content: center;">Highscore: <p id="score4">0</p></div>
+            </div>
+        </div>
+        <div class="image-container5">
+            <div class="text">Colour</div>
+                <div class="text2" style="display:flex;justify-content: center;">Highscore: <p id="score5">0</p></div>
+            </div>
+        </div>
+        <div class="image-container6">
+            <div class="text">Falling</div>
+                <div class="text2" style="display:flex;justify-content: center;">Highscore: <p id="score6">0</p></div>
+            </div>
+        </div>
+    </div>
+
+<script src="dropdownmobile.js"></script>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyB8IH1fwswVdHjd_WKwzwlkWvbOgCkzY9M",
+        authDomain: "infoirma-828ae.firebaseapp.com",
+        databaseURL: "https://infoirma-828ae-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "infoirma-828ae",
+        storageBucket: "infoirma-828ae.appspot.com",
+        messagingSenderId: "516090427000",
+        appId: "1:516090427000:web:cce9d3549ef62628fb9f8d",
+        measurementId: "G-V20BLGBPMJ"
+    };
+    
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    import { getDatabase, ref, set, child, get, update, remove, onValue }
+        from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+    const db = getDatabase();
+    currentUser = null;
+    var score1 = document.getElementById('score1');
+    var score2 = document.getElementById('score2');
+    var score3 = document.getElementById('score3');
+    var score4 = document.getElementById('score4');
+    var score5 = document.getElementById('score5');
+    var score6 = document.getElementById('score6');
+
+    let keepLoggedIn = localStorage.getItem("keepLoggedIn");
+    if (keepLoggedIn == "yes"){
+        currentUser = JSON.parse(localStorage.getItem('user'))
+    }
+    else{
+        currentUser = JSON.parse(sessionStorage.getItem('user'))
+    }
+    if (currentUser !== null){
+        onValue(ref(db, 'Userlist/' + currentUser.fullname), (snapshot) => {
+        const username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+        score1.innerText = snapshot.child("score1").val();
+        score2.innerText = snapshot.child("score2").val();
+        score3.innerText = snapshot.child("score3").val();
+        score4.innerText = snapshot.child("score4").val();
+        score5.innerText = snapshot.child("score5").val();
+        score6.innerText = snapshot.child("score6").val();
+        });
+    }
+</script>
+</body>
+</html>
