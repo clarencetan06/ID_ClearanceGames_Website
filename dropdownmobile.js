@@ -66,7 +66,6 @@
 
 // navbar 
 var userlink = document.getElementById('userlink');
-console.log(userlink);
 var signoutlink = document.getElementById('signoutlink');
 var currentUser = null;
 
