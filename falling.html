@@ -22,7 +22,197 @@
                         Right Arrow - Move Right
             </p>
             <p>Score: <span id="scoreSpan"></span></p>
+            <script>
+                var character = document.getElementById("character");
+                var game = document.getElementById("game");
+                var interval;
+                var both = 0;
+                var counter = 0;
+                var currentBlocks = [];
+
+                function moveLeft(){
+                    var left = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
+                    if(left>0){
+                        character.style.left = left - 2 + "px";
+                    }
+                }
+                function moveRight(){
+                    var left = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
+                    if(left<380){
+                        character.style.left = left + 2 + "px";
+                    }
+                }
+                document.addEventListener("keydown", event => {
+                    if(both==0){
+                        both++;
+                        if(event.key==="ArrowLeft"){
+                            interval = setInterval(moveLeft, 1);
+                        }
+                        if(event.key==="ArrowRight"){
+                            interval = setInterval(moveRight, 1);
+                        }
+                    }
+                });
+                document.addEventListener("keyup", event => {
+                    clearInterval(interval);
+                    both=0;
+                });
+
+                var blocks = setInterval(function(){
+                    var blockLast = document.getElementById("block"+(counter-1));
+                    var holeLast = document.getElementById("hole"+(counter-1));
+                    if(counter>0){
+                        var blockLastTop = parseInt(window.getComputedStyle(blockLast).getPropertyValue("top"));
+                        var holeLastTop = parseInt(window.getComputedStyle(holeLast).getPropertyValue("top"));
+                    }
+                    if(blockLastTop<400||counter==0){
+                        var block = document.createElement("div");
+                        var hole = document.createElement("div");
+                        block.setAttribute("class", "block");
+                        hole.setAttribute("class", "hole");
+                        block.setAttribute("id", "block"+counter);
+                        hole.setAttribute("id", "hole"+counter);
+                        block.style.top = blockLastTop + 100 + "px";
+                        hole.style.top = holeLastTop + 100 + "px";
+                        var random = Math.floor(Math.random() * 360);
+                        hole.style.left = random + "px";
+                        game.appendChild(block);
+                        game.appendChild(hole);
+                        currentBlocks.push(counter);
+                        counter++;
+                    }
+                    var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
+                    var characterLeft = parseInt(window.getComputedStyle(character).getPropertyValue("left"));
+                    var drop = 0;
+                    if(characterTop <= 0){
+                        alert("Game over. Score: "+(counter-9));
+                        clearInterval(blocks);
+                        location.reload();
+                    }
+                    else{
+                        if(counter - 9 <0){
+                            document.getElementById("scoreSpan").innerHTML = 0;
+                        }
+                        else{
+                            document.getElementById("scoreSpan").innerHTML = Math.floor(counter-9)
+                        }
+                    }
+                    for(var i = 0; i < currentBlocks.length;i++){
+                        let current = currentBlocks[i];
+                        let iblock = document.getElementById("block"+current);
+                        let ihole = document.getElementById("hole"+current);
+                        let iblockTop = parseFloat(window.getComputedStyle(iblock).getPropertyValue("top"));
+                        let iholeLeft = parseFloat(window.getComputedStyle(ihole).getPropertyValue("left"));
+                        iblock.style.top = iblockTop - 0.5 + "px";
+                        ihole.style.top = iblockTop - 0.5 + "px";
+                        if(iblockTop < -20){
+                            currentBlocks.shift();
+                            iblock.remove();
+                            ihole.remove();
+                        }
+                        if(iblockTop-20<characterTop && iblockTop>characterTop){
+                            drop++;
+                            if(iholeLeft<=characterLeft && iholeLeft+20>=characterLeft){
+                                drop = 0;
+                            }
+                        }
+                    }
+                    if(drop==0){
+                        if(characterTop < 480){
+                            character.style.top = characterTop + 2 + "px";
+                        }
+                    }else{
+                        character.style.top = characterTop - 0.5 + "px";
+                    }
+                },1);
+            </script>
+            <script type="module">
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+                import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+                
+                const firebaseConfig = {
+                apiKey: "AIzaSyB8IH1fwswVdHjd_WKwzwlkWvbOgCkzY9M",
+                authDomain: "infoirma-828ae.firebaseapp.com",
+                databaseURL: "https://infoirma-828ae-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "infoirma-828ae",
+                storageBucket: "infoirma-828ae.appspot.com",
+                messagingSenderId: "516090427000",
+                appId: "1:516090427000:web:cce9d3549ef62628fb9f8d",
+                measurementId: "G-V20BLGBPMJ"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+
+            import { getDatabase, ref, set, child, get, update, remove }
+                from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+            const db = getDatabase();
+            var currentUser = null;
+            var name = null;
+            console.log(currentUser);
+
+            if (localStorage.getItem("user") !== null) {
+                currentUser = JSON.parse(localStorage.getItem("user"));
+                name = currentUser.fullname;
+                console.log(name);
+            }
+
+            if (sessionStorage.getItem("user") !== null) {
+                currentUser = JSON.parse(sessionStorage.getItem("user"));
+                name = currentUser.fullname;
+                console.log(name);
+            }
+
+            // CheckCounter(11, name)
+            // window.alert = function(message) {
+            // var score = message.split(" ")[3];
+            // console.log(score);
+
+            // if (score) {
+            //     CheckCounter(score, name);
+            // }
+            // // alert("Game Over. score: "+Math.floor(counter/100));
+            // return;
+            // };
+
+            window.old_alert = window.alert;
+            window.alert = function(message) { 
+            var score = message.split(" ")[3];
+            
+            if (score) {
+            CheckCounter(score, name);
+            }
+            // still show the original alert
+            old_alert(message); 
+            };
+
+            function CheckCounter(score, name) {
+                if (!name) {
+                    console.error("Name is undefined");
+                    return;
+                }
+
+                const dbRef = ref(db, "Userlist");
+                console.log(score, name);
+                get(child(dbRef, name)).then(snapshot => {
+                    if (snapshot.exists()) {
+                        console.log("User exists in Userlist");
+                        if (snapshot.val().score6 <= score) {
+                            console.log("Updating score:", snapshot.val().score6, "to", score);
+                            update(ref(db, "Userlist/" + name), {
+                                score6: score
+                            }).then(() => console.log("Score updated"))
+                            .catch(error => console.error("Error updating score:", error));
+                        } else {
+                            console.log("Score is not less than or equal to", score);
+                        }
+                    } else {
+                        console.error("User does not exist in Userlist");
+                    }
+                }).catch(error => console.error("Error getting Userlist:", error));
+            }
+            </script>
         </section>
-        <script src="falling.js"></script>
     </body>
 </html>

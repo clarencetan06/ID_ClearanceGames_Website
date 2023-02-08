@@ -43,6 +43,141 @@
         <button id="restart" onclick="location.reload();">Restart</button>
         <p>Objective: Keep Stacking For As Long As Possible</p>
         <p>Each Level Placed = 1 Point</p>
+        <script>
+            if(window.innerWidth < 500){
+                var boardWidth = window.innerWidth-2;
+                var gameWidth = window.innerWidth-102;
+                document.documentElement.style.setProperty('--boardWidth', boardWidth + "px");
+                document.documentElement.style.setProperty('--width', gameWidth + "px");
+            }else{
+                var boardWidth = 500;
+                var gameWidth = 400;
+            }
+            var counter = 2;
+            var btn = document.getElementById("btn");
+
+            function stopSliding(sliderMoving, sliderAbove, sliderB4){
+                var sliderMoving = document.getElementById(sliderMoving);
+                var sliderAbove = document.getElementById(sliderAbove);
+                var sliderB4 = document.getElementById(sliderB4);
+                var left = window.getComputedStyle(sliderMoving).getPropertyValue("left");
+                sliderMoving.classList.remove("animate");
+                sliderMoving.style.left = left;
+                var width = parseFloat(window.getComputedStyle(sliderMoving).getPropertyValue("width"));
+                left = parseFloat(left);
+                var leftB4 = parseFloat(window.getComputedStyle(sliderB4).getPropertyValue("left"));
+                var difference = left - leftB4;
+                var absDifference = Math.abs(difference);
+                if(difference>width||difference<-width){
+                    document.getElementById("restart").style.display = "block";
+                    var score = "Score: ".concat(counter-2);
+                    btn.setAttribute("onclick", "");
+                    alert(score);
+                    Location.reload();
+                }
+                if(difference>0){
+                    left = left + absDifference;
+                }else{
+                    left = left - difference;
+                    sliderMoving.style.left = left.toString().concat("px");
+                }
+                var offset = (width - absDifference).toString().concat("px");
+                sliderMoving.style.width = offset; 
+                sliderAbove.style.width = offset;
+                sliderAbove.style.visibility = "visible";
+                gameWidth = gameWidth + absDifference;
+                document.documentElement.style.setProperty('--width', gameWidth + "px");
+                var onclick = "stopSliding('slider".concat(counter, "','slider", counter+1, "','slider", counter-1, "')");
+                btn.setAttribute("onclick",onclick);
+                counter++;
+            }
+        </script>
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+            
+            const firebaseConfig = {
+            apiKey: "AIzaSyB8IH1fwswVdHjd_WKwzwlkWvbOgCkzY9M",
+            authDomain: "infoirma-828ae.firebaseapp.com",
+            databaseURL: "https://infoirma-828ae-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "infoirma-828ae",
+            storageBucket: "infoirma-828ae.appspot.com",
+            messagingSenderId: "516090427000",
+            appId: "1:516090427000:web:cce9d3549ef62628fb9f8d",
+            measurementId: "G-V20BLGBPMJ"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        import { getDatabase, ref, set, child, get, update, remove }
+            from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+        const db = getDatabase();
+        var currentUser = null;
+        var name = null;
+        console.log(currentUser);
+
+        if (localStorage.getItem("user") !== null) {
+            currentUser = JSON.parse(localStorage.getItem("user"));
+            name = currentUser.fullname;
+            console.log(name);
+        }
+
+        if (sessionStorage.getItem("user") !== null) {
+            currentUser = JSON.parse(sessionStorage.getItem("user"));
+            name = currentUser.fullname;
+            console.log(name);
+        }
+
+        // CheckCounter(11, name)
+        // window.alert = function(message) {
+        // var score = message.split(" ")[3];
+        // console.log(score);
+
+        // if (score) {
+        //     CheckCounter(score, name);
+        // }
+        // // alert("Game Over. score: "+Math.floor(counter/100));
+        // return;
+        // };
+
+        window.old_alert = window.alert;
+        window.alert = function(message) { 
+        var score = message.split(" ")[3];
+        
+        if (score) {
+        CheckCounter(score, name);
+        }
+        // still show the original alert
+        old_alert(message); 
+        };
+
+        function CheckCounter(score, name) {
+            if (!name) {
+                console.error("Name is undefined");
+                return;
+            }
+
+            const dbRef = ref(db, "Userlist");
+            console.log(score, name);
+            get(child(dbRef, name)).then(snapshot => {
+                if (snapshot.exists()) {
+                    console.log("User exists in Userlist");
+                    if (snapshot.val().score3 <= score) {
+                        console.log("Updating score:", snapshot.val().score3, "to", score);
+                        update(ref(db, "Userlist/" + name), {
+                            score3: score
+                        }).then(() => console.log("Score updated"))
+                        .catch(error => console.error("Error updating score:", error));
+                    } else {
+                        console.log("Score is not less than or equal to", score);
+                    }
+                } else {
+                    console.error("User does not exist in Userlist");
+                }
+            }).catch(error => console.error("Error getting Userlist:", error));
+        }
+        </script>
     </body>
-    <script src="stacker.js"></script>
 </html>

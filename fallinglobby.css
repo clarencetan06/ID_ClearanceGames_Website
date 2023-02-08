@@ -312,3 +312,7 @@ color: #e91e63;
 .load-game{
     text-align:center;
 }
+.animation-center{  display: flex;
+	justify-content: center;
+	align-items: center;
+}

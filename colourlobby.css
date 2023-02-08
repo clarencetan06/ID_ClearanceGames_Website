@@ -307,9 +307,13 @@ border: 3px solid black;
     height: 500px;
 }
 .gamename{
-    color:red;
+    color: darkorchid;
     margin-bottom: 10px;
 }
 .load-game{
     text-align:center;
+}
+.animation-center{  display: flex;
+	justify-content: center;
+	align-items: center;
 }
