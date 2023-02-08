@@ -1,0 +1,25 @@
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.0/lottie_light.min.js"></script>
+</head>
+<body>
+  <div id="lottie-animation" style="width: 500px; height: 500px;"></div>
+  <script>
+    window.addEventListener("load", function() {
+      var animationContainer = document.getElementById("lottie-animation");
+  
+      var animation = lottie.loadAnimation({
+        container: animationContainer,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'https://assets6.lottiefiles.com/packages/lf20_hkWmKLInEJ.json'
+      });
+    });
+
+    setTimeout(function () {
+      window.location.href = "index.html";
+    }, 15000);
+  </script>
+</body>
+</html>
