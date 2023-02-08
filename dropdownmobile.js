@@ -63,3 +63,55 @@
     });
   
   })();
+
+// navbar 
+var userlink = document.getElementById('userlink');
+console.log(userlink);
+var signoutlink = document.getElementById('signoutlink');
+var currentUser = null;
+
+function getUsername(){
+    let keepLoggedIn = localStorage.getItem("keepLoggedIn");
+
+    if (keepLoggedIn == "yes"){
+        currentUser = JSON.parse(localStorage.getItem('user'))
+    }
+    else{
+        currentUser = JSON.parse(sessionStorage.getItem('user'))
+    }
+}
+
+function Signout(){
+    sessionStorage.removeItem('user');
+    localStorage.removeItem('user');
+    localStorage.removeItem('keepLoggedIn');
+    window.location = "index.html";
+}
+
+//window loads
+
+window.onload = function(){
+    getUsername();
+    if(currentUser == null){
+        userlink.innerText="Create New Account";
+        userlink.classList.replace("nav-link", "btn");
+        userlink.classList.add("btn-primary");
+        userlink.href = "Register user.html";
+
+        signoutlink.innerText="Login";
+        signoutlink.classList.replace("nav-link", "btn");
+        signoutlink.classList.add("btn-success");
+        signoutlink.href = "login.html";
+    }
+    else {
+        userlink.innerText=currentUser.fullname;
+        userlink.classList.replace("btn", "nav-link");
+        userlink.classList.add("fancy-text");
+        userlink.href = "#";
+
+        signoutlink.innerText="Sign Out";
+        signoutlink.classList.replace("btn", "nav-link");
+        signoutlink.classList.add("btn-success");
+        signoutlink.href = "javascript:Signout()";
+    } 
+}
