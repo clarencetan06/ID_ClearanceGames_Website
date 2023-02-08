@@ -6,7 +6,7 @@
 		<title>ClearanceGames</title>
 		<link href="homepage.css" rel="stylesheet" type="text/css" />
         <link href="normalize.css" rel="stylesheet" type="text/css" />
-        <script src="slideshow.js" defer></script>
+        <!-- <script src="slideshow.js" defer></script> -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style></style>
         
@@ -15,52 +15,59 @@
         <!-- header start -->
         <header class="header">
             <div class="container">
-            <div class="header-main">
-                <div class="logo">
-                    <a href="#">ClearanceGames</a>
-                </div>
-                <div class="open-nav-menu">
-                    <span></span>
-                </div>
-                <div class="menu-overlay">
-                </div>
-                <!-- navigation menu start -->
-                <nav class="nav-menu">
-                    <div class="close-nav-menu">
-                    <img src="images/homepage/close.svg" alt="close">
+                <div class="header-main">
+                    <div class="logo">
+                        <a href="#">ClearanceGames</a>
                     </div>
-                    <ul class="menu">
-                    <li class="menu-item">
-                        <a href="#">Home</a>
-                    </li>
-                    <li class="menu-item menu-item-has-children">
-                        <a href="#" data-toggle="sub-menu">Games <i class="plus"></i></a>
-                        <ul class="sub-menu">
-                            <li class="menu-item"><a href="#">Game 1</a></li>
-                            <li class="menu-item"><a href="#">Game 2</a></li>
-                            <li class="menu-item"><a href="#">Game 3</a></li>
-                            <li class="menu-item"><a href="#">Game 4</a></li>
+                    <div class="open-nav-menu">
+                        <span></span>
+                    </div>
+                    <div class="menu-overlay">
+                    </div>
+                    <!-- navigation menu start -->
+                    <nav class="nav-menu">
+                        <div class="close-nav-menu">
+                        <img src="images/homepage/close.svg" alt="close">
+                        </div>
+                        <ul class="menu">
+                        <li class="menu-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#" data-toggle="sub-menu">Games <i class="plus"></i></a>
+                            <ul class="sub-menu">
+                                <li class="menu-item"><a href="#">Game 1</a></li>
+                                <li class="menu-item"><a href="#">Game 2</a></li>
+                                <li class="menu-item"><a href="#">Game 3</a></li>
+                                <li class="menu-item"><a href="#">Game 4</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#">Highscore</a>
+                        </li>
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#" data-toggle="sub-menu">Socials <i class="plus"></i></a>
+                            <ul class="sub-menu">
+                                <li class="menu-item"><a href="#">page 1</a></li>
+                                <li class="menu-item"><a href="#">page 2</a></li>
+                                <li class="menu-item"><a href="#">page 3</a></li>
+                                <li class="menu-item"><a href="#">page 4</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a href="#">Feedback</a>
+                        </li>
+                        <li class="menu-item mx-1">
+                            <a id="userlink" class="nav-link" href="#">Name</a>
+                        </li>
+
+                        <li class="menu-item mx-1">
+                            <a id="signoutlink" class="nav-link" href="#">Sign out</a>
+                        </li>
                         </ul>
-                    </li>
-                    <li class="menu-item">
-                        <a href="#">Highscore</a>
-                    </li>
-                    <li class="menu-item menu-item-has-children">
-                        <a href="#" data-toggle="sub-menu">Socials <i class="plus"></i></a>
-                        <ul class="sub-menu">
-                            <li class="menu-item"><a href="#">page 1</a></li>
-                            <li class="menu-item"><a href="#">page 2</a></li>
-                            <li class="menu-item"><a href="#">page 3</a></li>
-                            <li class="menu-item"><a href="#">page 4</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item">
-                        <a href="#">Feedback</a>
-                    </li>
-                    </ul>
-                </nav>
-                <!-- navigation menu end -->
-            </div>
+                    </nav>
+                    <!-- navigation menu end -->
+                </div>
             </div>
         </header>
         <!-- header end -->
@@ -77,5 +84,57 @@
         </button>
     </section>
     <script src="dropdownmobile.js"></script>
+    <script>
+        // navbar 
+        var userlink = document.getElementById('userlink');
+        var signoutlink = document.getElementById('signoutlink');
+        var currentUser = null;
+
+        function getUsername(){
+            let keepLoggedIn = localStorage.getItem("keepLoggedIn");
+
+            if (keepLoggedIn == "yes"){
+                currentUser = JSON.parse(localStorage.getItem('user'))
+            }
+            else{
+                currentUser = JSON.parse(sessionStorage.getItem('user'))
+            }
+        }
+
+        function Signout(){
+            sessionStorage.removeItem('user');
+            localStorage.removeItem('user');
+            localStorage.removeItem('keepLoggedIn');
+            window.location = "TicTacToe.html";
+        }
+
+        //window loads
+
+        window.onload = function(){
+            getUsername();
+            if(currentUser == null || currentUser == undefined){
+                userlink.innerText="Create New Account";
+                userlink.classList.replace("nav-link", "btn");
+                userlink.classList.add("btn-primary");
+                userlink.href = "Register user.html";
+
+                signoutlink.innerText="Login";
+                signoutlink.classList.replace("nav-link", "btn");
+                signoutlink.classList.add("btn-success");
+                signoutlink.href = "login.html";
+            }
+            else {
+                userlink.innerText=currentUser.name;
+                userlink.classList.replace("btn", "nav-link");
+                userlink.classList.add("btn-primary");
+                userlink.href = "#";
+
+                signoutlink.innerText="Sign Out";
+                signoutlink.classList.replace("btn", "nav-link");
+                signoutlink.classList.add("btn-success");
+                signoutlink.href = "javascript:Signout()";
+            } 
+        }
+    </script>
     </body>
 </html>
