@@ -57,11 +57,11 @@
                         <li class="menu-item">
                             <a href="#">Feedback</a>
                         </li>
-                        <li class="menu-item mx-1">
+                        <li class="mx-1 menu-item">
                             <a id="userlink" class="nav-link" href="#">Name</a>
                         </li>
 
-                        <li class="menu-item mx-1">
+                        <li class="mx-1 menu-item">
                             <a id="signoutlink" class="nav-link" href="#">Sign out</a>
                         </li>
                         </ul>
@@ -87,6 +87,7 @@
     <script>
         // navbar 
         var userlink = document.getElementById('userlink');
+        console.log(userlink);
         var signoutlink = document.getElementById('signoutlink');
         var currentUser = null;
 
@@ -105,14 +106,14 @@
             sessionStorage.removeItem('user');
             localStorage.removeItem('user');
             localStorage.removeItem('keepLoggedIn');
-            window.location = "TicTacToe.html";
+            window.location = "index.html";
         }
 
         //window loads
 
         window.onload = function(){
             getUsername();
-            if(currentUser == null || currentUser == undefined){
+            if(currentUser == null){
                 userlink.innerText="Create New Account";
                 userlink.classList.replace("nav-link", "btn");
                 userlink.classList.add("btn-primary");
@@ -124,9 +125,9 @@
                 signoutlink.href = "login.html";
             }
             else {
-                userlink.innerText=currentUser.name;
+                userlink.innerText=currentUser.fullname;
                 userlink.classList.replace("btn", "nav-link");
-                userlink.classList.add("btn-primary");
+                userlink.classList.add("fancy-text");
                 userlink.href = "#";
 
                 signoutlink.innerText="Sign Out";

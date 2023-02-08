@@ -56,7 +56,6 @@
             function AuthenticateUser(){
                 const dbRef = ref(db)
                 get(child(dbRef, "Userlist/" + name.value)).then((snapshot) =>{
-                    console.log(name.value);
                     if(snapshot.exists()){
                         if(pass.value === snapshot.val().password){
                             // Update score system

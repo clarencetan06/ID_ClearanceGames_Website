@@ -327,3 +327,21 @@ border-color: #007bff;
   margin-left: 0.25rem !important;
   margin-right: 0.25rem !important;
 }
+
+#userlink {
+  padding: 10px 15px;
+}
+
+#signoutlink {
+  padding: 10px 15px;
+}
+
+.fancy-text {
+	font-family: "Arial Black", Arial, sans-serif;
+	color: #3b3b3b;
+	text-shadow: 2px 2px #c7c7c7;
+	font-size: 48px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: center;
+  }
