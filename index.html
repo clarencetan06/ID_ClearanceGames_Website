@@ -6,8 +6,9 @@
 		<title>ClearanceGames</title>
 		<link href="homepage.css" rel="stylesheet" type="text/css" />
         <link href="searchbar.css" rel="stylesheet" type="text/css" />
-        <link href="normalize.css" rel="stylesheet" type="text/css" />
         <script src="searchbar.js" defer></script>
+        <link href="normalize.css" rel="stylesheet" type="text/css" />
+        <script src="smoothscroll.js"></script>       
         <!-- <script src="slideshow.js" defer></script> -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.0/lottie_light.min.js"></script>
@@ -79,12 +80,16 @@
         <!-- header end -->
     <section class="home-section">
         <br><br><br><br>
-        <button class="button1">
+        <!--<button class="button1">
             <h2>Single-Player</h2>
         </button>
         <button class="button1">
             <h2>Multi-Player</h2>
-        </button>
+        </button>-->
+        <div class="first">
+            <button class="button2" onclick="smoothScroll(document.getElementById('second'))">Single-Player</button>
+            <button class="button2" onclick="smoothScroll(document.getElementById('second'))">Multi-Player</button>
+        </div>
         <br>
         <div class="search-wrapper">
             <label for="search">Search Games</label>
@@ -96,7 +101,62 @@
                 <div class="nameofgame" data-nameofgame></div>
             </div>
         </template>
-        
+        <div class="second" id="second">
+            <h2>Single-Player Games</h2>
+            
+        </div>
+        <br>
+        <div class="second" id="second">
+            <h2>Multi-Player Games</h2>
+            <div class="row">
+                <div class="column">
+                  <div class="card1">
+                    <h3>Card 1</h3>
+                    <p>Some text</p>
+                    <p>Some text</p>
+                  </div>
+                </div>             
+                <div class="column">
+                  <div class="card1">
+                    <h3>Card 2</h3>
+                    <p>Some text</p>
+                    <p>Some text</p>
+                  </div>
+                </div>               
+                <div class="column">
+                  <div class="card1">
+                    <h3>Card 3</h3>
+                    <p>Some text</p>
+                    <p>Some text</p>
+                  </div>
+                </div>            
+                <div class="column">
+                  <div class="card1">
+                    <h3>Card 4</h3>
+                    <p>Some text</p>
+                    <p>Some text</p>
+                  </div>
+                </div>
+                <div class="column">
+                    <div class="card1">
+                      <h3>Card 5</h3>
+                      <p>Some text</p>
+                      <p>Some text</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card1">
+                      <h3>Card 6</h3>
+                      <p>Some text</p>
+                      <p>Some text</p>
+                    </div>
+                </div>
+        </div>
+        <br>
+        <div class="leaderboard">
+            <h1>Leaderboard</h1>
+            
+        </div>
     </section>
     <script src="dropdownmobile.js"></script>
     </body>

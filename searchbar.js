@@ -38,7 +38,7 @@ searchInput.addEventListener("input", e => {
   })
 })
 
-fetch("https://www.myjsons.com/v/788d717")
+fetch("json.json")
   .then(res => res.json())
   .then(data => {
     users = data.map(user => {
