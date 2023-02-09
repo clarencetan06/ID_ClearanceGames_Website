@@ -144,7 +144,7 @@
 
         window.old_alert = window.alert;
         window.alert = function(message) { 
-        var score = message.split(" ")[3];
+        var score = message.split(" ")[1];
         
         if (score) {
         CheckCounter(score, name);
