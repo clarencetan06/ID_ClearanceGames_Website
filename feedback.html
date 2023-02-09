@@ -83,7 +83,7 @@
         <div class="container2 mt-5">
             <div class="row">
               <div class="col-md-6">
-                <img src="images/feedback/feedback.avif" alt="contact-form-image" width="420px" height="350">
+                <div id="lottie-animation" style="width: 420px; height: 350px;"></div>
               </div>
               <div class="col-md-6">
                 <h1 class="text-center">Contact Form</h1>
@@ -139,6 +139,19 @@
             </div>  
         </div>
         <script src="dropdownmobile.js"></script>
+        <script>
+            (function() {
+              var animationContainer = document.getElementById("lottie-animation");
+          
+              var animation = lottie.loadAnimation({
+                container: animationContainer,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://assets8.lottiefiles.com/packages/lf20_TZvjSDdby2.json'
+              });
+            })();
+          </script>
     </body>
 </html>
 
