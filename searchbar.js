@@ -1,51 +1,75 @@
-/*const userCardTemplate = doucment.querySelector("[data-user-template]")
-const userCardContainer = doucment.querySelector("[data-user-cards-container]")
-const searchInput = doucment.querySelector("[data-search]")
+let data = [
+  {
+    "title": "Flappy bird",
+    "description": "flAP FLAP",
+    "link": "flappybird.html"
+  },
+  {
+    "title": "jumping",
+    "description": "Jumo juMp",
+    "link": "jumping.html"
+  },
+  {
+    "title": "falling",
+    "description": "fall FaLL",
+    "link": "falling.html"
+  },
+  {
+      "title": "TicTacToe",
+      "description": "play with o and x",
+      "link": "TicTacToe.html"
+  },
+  {
+      "title": "Brick Beater",
+      "description": "beat ur mother",
+      "link": "brickbeater.html"
+  },
+  {
+      "title": "stacker",
+      "description": "stack",
+      "link": "jumping.html"
+  }, 
+  {
+      "title": "colour",
+      "description": "Jumo juMp",
+      "link": "colour.html"
+  },
+];
 
-let users = []
+const input = document.getElementById("search");
+const resultsContainer = document.getElementById("results");
 
-searchInput.addEventListener("input", e => {
-    const value = e.target.value.toLowerCase()
-    users.forEach(user => {
-        const isVisible = user.name.toLowerCase().includes(value)
-        user.element.classList.toggle("hide", !isVisible)
-    })
-})
+input.addEventListener("input", function() {
+  while (resultsContainer.firstChild) {
+    resultsContainer.removeChild(resultsContainer.firstChild);
+  }
 
-fetch("https://www.myjsons.com/v/788d717")
-    .then(res => res.json())
-    .then(data => {
-        users = data.map(user => {
-            const card= userCardTemplate.content.cloneNode(true).children[0]
-            const nameofgame = card.querySelector("[data-nameofgame]")
-            nameofgame.textContent = user.name
-            userCardContainer.append(card)
-            return { name: user.name, element: card}
-        })
-    })*/
-const userCardTemplate = document.querySelector("[data-user-template]")
-const userCardContainer = document.querySelector("[data-user-cards-container]")
-const searchInput = document.querySelector("[data-search]")
+  const searchValue = input.value.toLowerCase();
 
-let users = []
+  if (!searchValue) {
+    return;
+  }
 
-searchInput.addEventListener("input", e => {
-  const value = e.target.value.toLowerCase()
-  users.forEach(user => {
-    const isVisible =
-      user.name.toLowerCase().includes(value) ||
-    user.element.classList.toggle("hide", !isVisible)
-  })
-})
+  const resultWrapper = document.createElement("div");
+  resultWrapper.classList.add("result-wrapper");
 
-fetch("json.json")
-  .then(res => res.json())
-  .then(data => {
-    users = data.map(user => {
-      const card = userCardTemplate.content.cloneNode(true).children[0]
-      const header = card.querySelector("[data-header]")
-      header.textContent = user.name
-      userCardContainer.append(card)
-      return { name: user.name, element: card }
-    })
-  })
+  for (let item of data) {
+    if (item.title.toLowerCase().includes(searchValue) || item.description.toLowerCase().includes(searchValue)) {
+      const result = document.createElement("div");
+      result.classList.add("result");
+
+      const link = document.createElement("a");
+      link.href = item.link;
+      link.textContent = item.title;
+      result.appendChild(link);
+
+      const description = document.createElement("p");
+      description.textContent = item.description;
+      result.appendChild(description);
+
+      resultWrapper.appendChild(result);
+    }
+  }
+
+  resultsContainer.appendChild(resultWrapper);
+});
