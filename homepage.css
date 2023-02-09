@@ -354,6 +354,7 @@ border-color: #007bff;
 	border: 1px solid black;
 	width: 90%;
 	margin: auto;
+	background-color: whitesmoke;
 }
 .button2{
 	width: 250px;
@@ -370,20 +371,64 @@ border-color: #007bff;
 	border: 1px solid black;
 	margin: auto;
 }
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
+  .results-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .result-wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .result {
+    width: 25%;
+    padding: 10px;
+    background-color: lightgray;
+    margin-right: 10px;
+    box-sizing: border-box;
+	border-style: solid;
+  }
+
+  input[type="text"] {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
 /*Single,multi card*/
 /* Float four columns side by side */
 .column {
 	float: left;
-	width: 33%;
+	width: 50%;
 	padding: 0 10px;
+	margin-bottom: 10px;
   }
+.column1 {
+float: center;
+width: 50%;
+padding: 0 10px;
+margin: auto;
+margin-bottom: 10px;
+}
   
   /* Remove extra left and right margins, due to padding */
-  .row {margin: 0 -5px;}
+  .row, .row1 {margin: 0 -5px;}
   
   /* Clear floats after the columns */
-  .row:after {
+  .row:after, .row1:after{
 	content: "";
 	display: table;
 	clear: both;
@@ -391,7 +436,7 @@ border-color: #007bff;
   
   /* Responsive columns */
   @media screen and (max-width: 600px) {
-	.column {
+	.column, .column1 {
 	  width: 100%;
 	  display: block;
 	  margin-bottom: 20px;
@@ -402,5 +447,6 @@ border-color: #007bff;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	padding: 16px;
 	text-align: center;
-	background-color: #f1f1f1;
+	background-color: white;
+	border: 1px solid black;
   }

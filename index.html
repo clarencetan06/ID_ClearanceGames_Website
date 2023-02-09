@@ -50,7 +50,7 @@
                             </ul>
                         </li>
                         <li class="menu-item">
-                            <a href="highscore.html">Highscore</a>
+                            <a href="highscore.html">Your Highscore</a>
                         </li>
                         <li class="menu-item menu-item-has-children">
                             <a href="#" data-toggle="sub-menu">Socials <i class="plus"></i></a>
@@ -91,19 +91,21 @@
             <button class="button2" onclick="smoothScroll(document.getElementById('second'))">Multi-Player</button>
         </div>
         <br>
-        <div class="search-wrapper">
-            <label for="search">Search Games</label>
-            <input type="search" id="search" data-search>
-        </div>
-        <div class="user-cards" data-user-cards-container></div>
-        <template data-user-template>
-            <div class="card">
-                <div class="nameofgame" data-nameofgame></div>
-            </div>
-        </template>
+        <div class="search-container">
+            <input id="search" type="text" placeholder="Search For Game">
+          </div>
+        <div id="results" class="results-container"></div>
         <div class="second" id="second">
             <h2>Single-Player Games</h2>
-            
+            <div class="row1">
+                <div class="column1">
+                  <div class="card1">
+                    <h3>TicTacToe</h3>
+                    
+                    <p>Some text</p>
+                  </div>
+                </div> 
+            </div>            
         </div>
         <br>
         <div class="second" id="second">
@@ -111,46 +113,41 @@
             <div class="row">
                 <div class="column">
                   <div class="card1">
-                    <h3>Card 1</h3>
-                    <p>Some text</p>
+                    <h3>Block Jumper</h3>
                     <p>Some text</p>
                   </div>
                 </div>             
                 <div class="column">
                   <div class="card1">
-                    <h3>Card 2</h3>
-                    <p>Some text</p>
+                    <h3>Ball Fall</h3>
                     <p>Some text</p>
                   </div>
                 </div>               
                 <div class="column">
                   <div class="card1">
-                    <h3>Card 3</h3>
-                    <p>Some text</p>
+                    <h3>Flappy Ball</h3>
                     <p>Some text</p>
                   </div>
                 </div>            
                 <div class="column">
                   <div class="card1">
-                    <h3>Card 4</h3>
-                    <p>Some text</p>
+                    <h3>Brick Beater</h3>
                     <p>Some text</p>
                   </div>
                 </div>
                 <div class="column">
                     <div class="card1">
-                      <h3>Card 5</h3>
-                      <p>Some text</p>
+                      <h3>Brain Teaser</h3>
                       <p>Some text</p>
                     </div>
                 </div>
                 <div class="column">
                     <div class="card1">
-                      <h3>Card 6</h3>
-                      <p>Some text</p>
+                      <h3>Stack Tower</h3>
                       <p>Some text</p>
                     </div>
                 </div>
+            </div>
         </div>
         <br>
         <div class="leaderboard">

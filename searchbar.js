@@ -38,14 +38,14 @@ searchInput.addEventListener("input", e => {
   })
 })
 
-fetch("json.json")
-  .then(res => res.json())
-  .then(data => {
-    users = data.map(user => {
-      const card = userCardTemplate.content.cloneNode(true).children[0]
-      const header = card.querySelector("[data-header]")
-      header.textContent = user.name
-      userCardContainer.append(card)
-      return { name: user.name, element: card }
-    })
-  })
+// fetch("json.json")
+//   .then(res => res.json())
+//   .then(data => {
+//     users = data.map(user => {
+//       const card = userCardTemplate.content.cloneNode(true).children[0]
+//       const header = card.querySelector("[data-header]")
+//       header.textContent = user.name
+//       userCardContainer.append(card)
+//       return { name: user.name, element: card }
+//     })
+//   })
