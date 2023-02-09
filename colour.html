@@ -35,6 +35,165 @@
         <p>Objective: Choose the colour that is common in both words and colours of the words shown above.<br>
             Correct Answer = 1 point
         </p>
-        <script src="colour.js"></script>
+        <script>
+            var colors = ["Blue", "Red", "Green", "Yellow"];
+            function startGame(){
+                setInterval(timer, 1000);
+                reset();
+            }
+            var checkmark = document.getElementById("checkmark");
+            var wrong = document.getElementById("wrong");
+            var correct = document.getElementById("correct");
+            var correctInt = 0
+            function checkColor(color, correctAnswer){
+                if(color===correctAnswer){
+                    correctInt++;
+                    checkmark.classList.add("fadeAway");
+                }else{
+                    wrong.classList.add("fadeAway");
+                }
+                setTimeout(function(){
+                    checkmark.classList.remove("fadeAway");
+                    wrong.classList.remove("fadeAway");
+                },500);
+                reset();
+                correct.innerHTML = correctInt;
+            }
+
+            function reset(){
+                var random1 = Math.floor(Math.random()*2);
+                if(random1==0){
+                    var color1 = document.getElementById("color1");
+                    var color2 = document.getElementById("color2");
+                }else{
+                    var color2 = document.getElementById("color1");
+                    var color1 = document.getElementById("color2");
+                }
+                document.getElementById("start").style.display = "none";
+                var random = Math.floor(Math.random() * 4);
+                var correctAnswer = colors[random];
+                color1.innerHTML = correctAnswer;
+                color2.style.color = correctAnswer;
+                if(random+1==4){
+                    color2.innerHTML = colors[random-3];
+                }else{
+                    color2.innerHTML = colors[random+1];
+                }
+                if(random-1==-1){
+                    color1.style.color = colors[random+3];
+                }else{
+                    color1.style.color = colors[random-1];
+                }
+                color1.style.display = "block";
+                color2.style.display = "block";
+                addClick("Blue", correctAnswer);
+                addClick("Red", correctAnswer);
+                addClick("Green", correctAnswer);
+                addClick("Yellow", correctAnswer);
+            }
+            function addClick(color, correctAnswer){
+                var colorSpan = document.getElementById(color);
+                let onclick = "checkColor('".concat(color,"','",correctAnswer,"')");
+                colorSpan.setAttribute("onclick", onclick);
+            }
+
+            var countdown = 30;
+            function timer(){
+                document.getElementById("time").innerHTML = countdown;
+                if(countdown==0){
+                    clearInterval(timer);
+                    alert("Game Over. Score: " + correctInt);
+                    location.reload();
+                }
+                countdown--;
+            }
+        </script>
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+                import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+                
+                const firebaseConfig = {
+                apiKey: "AIzaSyB8IH1fwswVdHjd_WKwzwlkWvbOgCkzY9M",
+                authDomain: "infoirma-828ae.firebaseapp.com",
+                databaseURL: "https://infoirma-828ae-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "infoirma-828ae",
+                storageBucket: "infoirma-828ae.appspot.com",
+                messagingSenderId: "516090427000",
+                appId: "1:516090427000:web:cce9d3549ef62628fb9f8d",
+                measurementId: "G-V20BLGBPMJ"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+
+            import { getDatabase, ref, set, child, get, update, remove }
+                from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+            const db = getDatabase();
+            var currentUser = null;
+            var name = null;
+            console.log(currentUser);
+
+            if (localStorage.getItem("user") !== null) {
+                currentUser = JSON.parse(localStorage.getItem("user"));
+                name = currentUser.fullname;
+                console.log(name);
+            }
+
+            if (sessionStorage.getItem("user") !== null) {
+                currentUser = JSON.parse(sessionStorage.getItem("user"));
+                name = currentUser.fullname;
+                console.log(name);
+            }
+
+            // CheckCounter(11, name)
+            // window.alert = function(message) {
+            // var score = message.split(" ")[3];
+            // console.log(score);
+
+            // if (score) {
+            //     CheckCounter(score, name);
+            // }
+            // // alert("Game Over. score: "+Math.floor(counter/100));
+            // return;
+            // };
+
+            window.old_alert = window.alert;
+            window.alert = function(message) { 
+            var score = message.split(" ")[3];
+            
+            if (score) {
+            CheckCounter(score, name);
+            }
+            // still show the original alert
+            old_alert(message); 
+            };
+
+            function CheckCounter(score, name) {
+                if (!name) {
+                    console.error("Name is undefined");
+                    return;
+                }
+
+                const dbRef = ref(db, "Userlist");
+                console.log(score, name);
+                get(child(dbRef, name)).then(snapshot => {
+                    if (snapshot.exists()) {
+                        console.log("User exists in Userlist");
+                        if (snapshot.val().score5 <= score) {
+                            console.log("Updating score:", snapshot.val().score5, "to", score);
+                            update(ref(db, "Userlist/" + name), {
+                                score5: score
+                            }).then(() => console.log("Score updated"))
+                            .catch(error => console.error("Error updating score:", error));
+                        } else {
+                            console.log("Score is not less than or equal to", score);
+                        }
+                    } else {
+                        console.error("User does not exist in Userlist");
+                    }
+                }).catch(error => console.error("Error getting Userlist:", error));
+            }
+        </script>
     </body>
 </html>

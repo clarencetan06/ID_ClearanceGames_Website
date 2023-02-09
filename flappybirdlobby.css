@@ -312,3 +312,7 @@ color: white;
 .load-game{
     text-align:center;
 }
+.animation-center{  display: flex;
+	justify-content: center;
+	align-items: center;
+}

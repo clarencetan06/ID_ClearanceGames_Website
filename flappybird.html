@@ -21,7 +21,149 @@
             <p>Aim: Try Not to Hit the Pipes</p>
             <p>Controls: Left Mouse Button to Bounce</p>
             <p>Score: <span id="scoreSpan"></span></p>
+            <script>
+                var block = document.getElementById("block");
+                var hole = document.getElementById("hole");
+                var character = document.getElementById("character");
+                var jumping = 0;
+                var counter = 0;
+                var firstRun = true;
+
+                hole.addEventListener('animationiteration', () => {
+                    var random = -((Math.random()*300)+150);
+                    hole.style.top = random + "px";
+                    counter++;
+                    if (firstRun == true){
+                        document.getElementById("scoreSpan").innerHTML = counter;
+                    }
+                    else{
+                        document.getElementById("scoreSpan").innerHTML = counter - 1;
+                    }
+                });
+                setInterval(function(){
+                    var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
+                    if(jumping==0){
+                        character.style.top = (characterTop+3)+"px";
+                    }
+                    var blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
+                    var holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
+                    var cTop = -(500-characterTop);
+                    if((characterTop>480)||((blockLeft<20)&&(blockLeft>-50)&&((cTop<holeTop)||(cTop>holeTop+130)))){
+                        if (firstRun == true){
+                            counter = counter + 1;
+                        }
+                        alert("Game over. Score: "+(counter-1));
+                        character.style.top = 100 + "px";
+                        counter = 0;
+                        firstRun = false;
+                    }
+                },10);
+
+                function jump(){
+                    jumping = 1;
+                    let jumpCount = 0;
+                    var jumpInterval = setInterval(function(){
+                        var characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
+                        if((characterTop>6)&&(jumpCount<15)){
+                            character.style.top = (characterTop-5)+"px";
+                        }
+                        if(jumpCount>20){
+                            clearInterval(jumpInterval);
+                            jumping=0;
+                            jumpCount=0;
+                        }
+                        jumpCount++;
+                    },10);
+                }
+            </script>
+            <script type="module">
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+                import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+                
+                const firebaseConfig = {
+                apiKey: "AIzaSyB8IH1fwswVdHjd_WKwzwlkWvbOgCkzY9M",
+                authDomain: "infoirma-828ae.firebaseapp.com",
+                databaseURL: "https://infoirma-828ae-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "infoirma-828ae",
+                storageBucket: "infoirma-828ae.appspot.com",
+                messagingSenderId: "516090427000",
+                appId: "1:516090427000:web:cce9d3549ef62628fb9f8d",
+                measurementId: "G-V20BLGBPMJ"
+            };
+
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+
+            import { getDatabase, ref, set, child, get, update, remove }
+                from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+            const db = getDatabase();
+            var currentUser = null;
+            var name = null;
+            console.log(currentUser);
+
+            if (localStorage.getItem("user") !== null) {
+                currentUser = JSON.parse(localStorage.getItem("user"));
+                name = currentUser.fullname;
+                console.log(name);
+            }
+
+            if (sessionStorage.getItem("user") !== null) {
+                currentUser = JSON.parse(sessionStorage.getItem("user"));
+                name = currentUser.fullname;
+                console.log(name);
+            }
+
+            // CheckCounter(11, name)
+            // window.alert = function(message) {
+            // var score = message.split(" ")[3];
+            // console.log(score);
+
+            // if (score) {
+            //     CheckCounter(score, name);
+            // }
+            // // alert("Game Over. score: "+Math.floor(counter/100));
+            // return;
+            // };
+
+            window.old_alert = window.alert;
+            window.alert = function(message) { 
+            var score = message.split(" ")[3];
+            
+            if (score) {
+            CheckCounter(score, name);
+            }
+            // still show the original alert
+            old_alert(message); 
+            };
+
+            function CheckCounter(score, name) {
+                if (!name) {
+                    console.error("Name is undefined");
+                    return;
+                }
+
+                const dbRef = ref(db, "Userlist");
+                console.log(score, name);
+                get(child(dbRef, name)).then(snapshot => {
+                    if (snapshot.exists()) {
+                        console.log("User exists in Userlist");
+                        if (snapshot.val().score2 <= score) {
+                            console.log("Updating score:", snapshot.val().score2, "to", score);
+                            update(ref(db, "Userlist/" + name), {
+                                score2: score
+                            }).then(() => console.log("Score updated"))
+                            .catch(error => console.error("Error updating score:", error));
+                        } else {
+                            console.log("Score is not less than or equal to", score);
+                        }
+                    } else {
+                        console.error("User does not exist in Userlist");
+                    }
+                }).catch(error => console.error("Error getting Userlist:", error));
+            }
+        
+            </script>
         </section>
-        <script src="flappybird.js" defer></script>
     </body>
 </html>
