@@ -106,7 +106,7 @@
 
             window.old_alert = window.alert;
             window.alert = function(message) { 
-            var score = message.split(" ")[3];
+            let score = message.split(" ")[3];
             
             if (score) {
             CheckCounter(score, name);
@@ -126,7 +126,7 @@
                 get(child(dbRef, name)).then(snapshot => {
                     if (snapshot.exists()) {
                         console.log("User exists in Userlist");
-                        if (snapshot.val().score1 <= score) {
+                        if (snapshot.val().score1 < score) {
                             console.log("Updating score:", snapshot.val().score1, "to", score);
                             update(ref(db, "Userlist/" + name), {
                                 score1: score
