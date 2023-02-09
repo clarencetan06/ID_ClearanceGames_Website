@@ -58,10 +58,6 @@
                 get(child(dbRef, "Userlist/" + name.value)).then((snapshot) =>{
                     if(snapshot.exists()){
                         if(pass.value === snapshot.val().password){
-                            // Update score system
-                            update(ref(db, "Userlist/" + name.value),{
-                                score1: 3
-                            })
                             login(snapshot.val());
                         }
 
