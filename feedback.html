@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Contact Form</title>
+		<link href="homepage.css" rel="stylesheet" type="text/css" />
+        <link href="feedback.css" rel="stylesheet" type="text/css" />
+        <script src="feedback.js" defer></script>
+        <link href="normalize.css" rel="stylesheet" type="text/css" />
+        <script src="smoothscroll.js"></script>       
+        <!-- <script src="slideshow.js" defer></script> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.0/lottie_light.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <style></style>
+        
+    </head>
+    <body style="background-color:lightgray">
+        <!-- header start -->
+        <header class="header">
+            <div class="container">
+                <div class="header-main">
+                    <div class="logo">
+                        <a href="index.html">ClearanceGames</a>
+                    </div>
+                    <div class="open-nav-menu">
+                        <span></span>
+                    </div>
+                    <div class="menu-overlay">
+                    </div>
+                    <!-- navigation menu start -->
+                    <nav class="nav-menu">
+                        <div class="close-nav-menu">
+                        <img src="images/homepage/close.svg" alt="close">
+                        </div>
+                        <ul class="menu">
+                        <li class="menu-item">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#" data-toggle="sub-menu">Games <i class="plus"></i></a>
+                            <ul class="sub-menu">
+                                <li class="menu-item"><a href="TicTacToe.html">TicTacToe</a></li>
+                                <li class="menu-item"><a href="jumpinglobby.html">Block Jumper</a></li>
+                                <li class="menu-item"><a href="fallinglobby.html">Ball Fall</a></li>
+                                <li class="menu-item"><a href="flappybirdlobby.html">Flappy Ball</a></li>
+                                <li class="menu-item"><a href="brickbeaterlobby.html">Brick Beater</a></li>
+                                <li class="menu-item"><a href="colourlobby.html">Brain Teaser</a></li>
+                                <li class="menu-item"><a href="stackerlobby.html">Stack Tower</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a href="highscore.html">Your Highscore</a>
+                        </li>
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#" data-toggle="sub-menu">Socials <i class="plus"></i></a>
+                            <ul class="sub-menu">
+                                <li class="menu-item"><a href="#">page 1</a></li>
+                                <li class="menu-item"><a href="#">page 2</a></li>
+                                <li class="menu-item"><a href="#">page 3</a></li>
+                                <li class="menu-item"><a href="#">page 4</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <a href="feedback.html">Feedback</a>
+                        </li>
+                        <li class="mx-1 menu-item">
+                            <a id="userlink" class="nav-link" href="#">Name</a>
+                        </li>
+
+                        <li class="mx-1 menu-item">
+                            <a id="signoutlink" class="nav-link" href="#">Sign out</a>
+                        </li>
+                        </ul>
+                    </nav>
+                    <!-- navigation menu end -->
+                </div>
+            </div>
+        </header>
+        <div class="container2 mt-5">
+            <div class="row">
+              <div class="col-md-6">
+                <img src="images/feedback/feedback.avif" alt="contact-form-image" width="420px" height="350">
+              </div>
+              <div class="col-md-6">
+                <h1 class="text-center">Contact Form</h1>
+                <form id="contact-form">
+                  <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+                <div id="message-alert" class="alert mt-3" style="display:none"></div>
+              </div>
+            </div>
+            <h2 class="text-center mt-5">Frequently Asked Questions</h2>
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      Question 1: Is ClareanceGames free?
+                    </button>
+                  </h5>
+                </div>
+          
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    Yes, we are currently free for all users.
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Question 2: Why are there so little games?
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                    As we are a new game site, we need time to increase the amount of games we have on this site.
+                  </div>
+                </div>
+              </div>
+            </div>  
+        </div>
+        <script src="dropdownmobile.js"></script>
+    </body>
+</html>
+
+  
