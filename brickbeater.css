@@ -13,6 +13,8 @@
     height: 600px;
     width: var(--fourhundred);
     margin: auto;
+    background-color: darkgoldenrod;
+    opacity: 0.9;
 }
 .user{
     background-color: blue;
