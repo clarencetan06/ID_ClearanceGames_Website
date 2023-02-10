@@ -113,9 +113,9 @@ https://www.digivid360.com/blog/video-production/how-to-create-videos-remotely/a
 
 ## Acknowledgements:
 
-We recieved inspiration from https://www.y8.com/ .
-We also recieved inspiration from Kai Quan's previous assignment for our footer.
-We also recieved inspiration from https://www.youtube.com/@KnifeCircus who's tutorials guided us when doing our games.
+1. We recieved inspiration from https://www.y8.com/ .
+2. We also recieved inspiration from Kai Quan's previous assignment for our footer.
+3. We also recieved inspiration from https://www.youtube.com/@KnifeCircus who's tutorials guided us when doing our games.
 
 ## Link to GitHub Page: https://github.com/clarencetan06/ID_ClearanceGames_Website
 
