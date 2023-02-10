@@ -364,12 +364,6 @@ border-color: #007bff;
 	background:purple;
 	color: white;
 }
-.leaderboard{
-	width: 90%;
-	text-align: center;
-	border: 1px solid white;
-	margin: auto;
-}
 .search-container {
     display: flex;
     align-items: center;
