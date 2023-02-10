@@ -349,7 +349,6 @@ border-color: #007bff;
 }
 
 .second {
-    width: 100%;
 	border: 1px solid black;
 	width: 90%;
 	margin: auto;
@@ -417,11 +416,10 @@ border-color: #007bff;
 	margin-bottom: 10px;
   }
 .column1 {
-float: center;
-width: 50%;
-padding: 0 10px;
-margin: auto;
-margin-bottom: 10px;
+	width: 50%;
+	/* padding: 0 10px;
+	margin: auto;
+	margin-bottom: 10px; */
 }
   
   /* Remove extra left and right margins, due to padding */
@@ -447,7 +445,6 @@ margin-bottom: 10px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	padding: 16px;
 	text-align: center;
-	background-color: whitesmoke;
 	border: 1px solid black;
   }
 .button1{
@@ -583,3 +580,80 @@ margin-left: 400px;
 .mb-2 {
     margin-bottom: 1rem;
    }
+
+.column-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.column-image-container {
+  width: 30%;
+  padding: 10px;
+  display: flex;
+}
+
+.column-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.column-text {
+	width: 70%;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-left: -350px;
+	text-align: left;
+	font-size: 1.0em;
+	line-height: 1.5em;
+	color: white;
+	text-shadow: 2px 2px gray;
+  }
+
+.column-text2 {
+	width: 70%;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-left: -300px;
+	text-align: left;
+	font-size: 1.0em;
+	line-height: 1.5em;
+	color: white;
+	text-shadow: 2px 2px gray;
+}
+
+.column-text3 {
+	width: 70%;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-left: -340px;
+	text-align: left;
+	font-size: 1.0em;
+	line-height: 1.5em;
+	color: white;
+	text-shadow: 3px 3px gray;
+  }
+
+.column-text4 {
+	width: 70%;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-left: -420px;
+	text-align: left;
+	font-size: 1.0em;
+	line-height: 1.5em;
+	color: white;
+	text-shadow: 2px 2px gray;
+}
