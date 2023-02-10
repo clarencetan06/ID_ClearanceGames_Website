@@ -206,7 +206,6 @@ a{
 	min-height: 100vh;
 	background-image: url(images/displaybackground/gback.jpg);
 	background-position: center top;
-	background-size: cover;
 }
 /* responsive */
 @media(max-width: 991px){
@@ -359,10 +358,11 @@ border-color: #007bff;
 .button2{
 	width: 250px;
 	height: 50px;
-	background: #999;
+	background: pink;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .button2:hover{
-	background:blue;
+	background:purple;
 	color: white;
 }
 .leaderboard{
@@ -409,7 +409,7 @@ border-color: #007bff;
   }
 
 /*Single,multi card*/
-/* Float four columns side by side */
+/* Float 2 columns side by side */
 .column {
 	float: left;
 	width: 50%;
@@ -447,78 +447,78 @@ margin-bottom: 10px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 	padding: 16px;
 	text-align: center;
-	background-color: white;
+	background-color: whitesmoke;
 	border: 1px solid black;
   }
 .button1{
-	color:rgb(4, 239, 0);
-	background: transparent;
-	border: transparent;
+	color:black;
+	background: rgb(4, 239, 0);
+	border: 1px solid white;
 }
 .button1:hover{
 	color: black;
-	background-color: rgb(4, 239, 0);
+	background-color: red;
 	border: 1px solid white;
 }
 .button3{
-	color: rgb(255, 106, 0);
-	background: black;
-	border: transparent;
+	color:black;
+	background: rgb(4, 239, 0);
+	border: 1px solid white;
 }
 .button3:hover{
 	color: black;
-	background-color: rgb(255, 106, 0);
-	border: 1px solid black;
+	background-color: red;
+	border: 1px solid white;
 }
 .button4{
-	color: rgb(157, 0, 255);
-	background: whitesmoke;
-	border: transparent;
+	color:black;
+	background: rgb(4, 239, 0);
+	border: 1px solid white;
 }
 .button4:hover{
-	color: whitesmoke;
-	background-color: rgb(157, 0, 255);
-	border: 1px solid black;
+	color: black;
+	background-color: red;
+	border: 1px solid white;
 }
 .button5{
-	color: red;
-	background: transparent;
-	border: transparent;
+	color:black;
+	background: rgb(4, 239, 0);
+	border: 1px solid white;
 }
 .button5:hover{
 	color: black;
-	background-color: yellow;
-	border: 1px solid black;
+	background-color: red;
+	border: 1px solid white;
 }
 .button6{
-	color: whitesmoke;
-	background: transparent;
-	border: transparent;
+	color:black;
+	background: rgb(4, 239, 0);
+	border: 1px solid white;
 }
 .button6:hover{
 	color: black;
-	background-color: whitesmoke;
-	border: 1px solid black;
+	background-color: red;
+	border: 1px solid white;
 }
 .button7{
-	color: whitesmoke;
-	background: transparent;
-	border: transparent;
+	color:black;
+	background: rgb(4, 239, 0);
+	border: 1px solid white;
 }
 .button7:hover{
 	color: black;
-	background-color: whitesmoke;
-	border: 1px solid black;
+	background-color: red;
+	border: 1px solid white;
 }
 .button8{
-	color: whitesmoke;
-	background: transparent;
-	border: transparent;
+	color:black;
+	background: rgb(4, 239, 0);
+	border: 1px solid white;
 }
 .button8:hover{
-	color: whitesmoke;
-	background-color: black;
-	border: 1px solid black;
+	color: black;
+	background-color: red;
+	border: 1px solid white;
 }
 /*footer*/
 footer.footer {

@@ -21,7 +21,7 @@ let data = [
   },
   {
       "title": "Stack Tower",
-      "link": "jumpinglobby.html"
+      "link": "stackerlobby.html"
   }, 
   {
       "title": "Brain Teaser",
