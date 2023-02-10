@@ -32,6 +32,7 @@
         <span id="correct"></span>
         <span id="time"></span>
         <br><br><br>
+        <button id="restart" onclick="location.reload();">Restart</button>
         <p>Objective: Choose the colour that is common in both words and colours of the words shown above.<br>
             Correct Answer = 1 point
         </p>
@@ -103,7 +104,9 @@
                 if(countdown==0){
                     clearInterval(timer);
                     alert("Game Over. Score: " + correctInt);
-                    // location.reload();
+                    //location.reload();
+                    document.getElementById("time").style.display = "none";
+                    document.getElementById("restart").style.display = "block";
                 }
                 countdown--;
             }

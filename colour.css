@@ -111,3 +111,21 @@ p{
     text-align: center;
     color: white;
 }
+button{
+    font-size: 2rem;
+    padding: 0.5rem 2rem;
+    border: 3px solid black;
+    border-radius: 0.3rem;
+    margin: 1rem auto;
+    display: block;
+}
+#btn:hover, #restart:hover{
+    background-color: yellow; 
+}
+#btn:active, #restart:active{
+    background-color: red;
+}
+#restart{
+    background-color: orange;
+    display: none;
+}

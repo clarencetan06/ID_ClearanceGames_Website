@@ -65,7 +65,7 @@ function timer(){
     if(countdown==0){
         clearInterval(timer);
         alert("Game Over. Score: " + correctInt);
-        location.reload();
+        //location.reload();
     }
     countdown--;
 }
