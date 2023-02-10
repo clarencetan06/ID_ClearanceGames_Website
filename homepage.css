@@ -348,7 +348,7 @@ border-color: #007bff;
     width: 100%;
 }
 
-.second {
+.second, .secon2 {
 	border: 1px solid black;
 	width: 90%;
 	margin: auto;
