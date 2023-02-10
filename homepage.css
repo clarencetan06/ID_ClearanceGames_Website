@@ -207,6 +207,7 @@ a{
 	background-image: url(images/displaybackground/gback.jpg);
 	background-position: center top;
 	background-size: cover;
+	background-repeat: repeat;
 }
 /* responsive */
 @media(max-width: 991px){

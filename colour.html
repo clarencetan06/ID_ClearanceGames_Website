@@ -103,7 +103,7 @@
                 if(countdown==0){
                     clearInterval(timer);
                     alert("Game Over. Score: " + correctInt);
-                    location.reload();
+                    // location.reload();
                 }
                 countdown--;
             }
@@ -175,25 +175,25 @@
                     return;
                 }
 
-                const dbRef = ref(db, "Userlist");
-                console.log(score, name);
-                get(child(dbRef, name)).then(snapshot => {
-                    if (snapshot.exists()) {
-                        console.log("User exists in Userlist");
-                        if (snapshot.val().score5 <= score) {
-                            console.log("Updating score:", snapshot.val().score5, "to", score);
-                            update(ref(db, "Userlist/" + name), {
-                                score5: score
-                            }).then(() => console.log("Score updated"))
-                            .catch(error => console.error("Error updating score:", error));
-                        } else {
-                            console.log("Score is not less than or equal to", score);
-                        }
+            const dbRef = ref(db)
+            console.log(score, name);
+            get(child(dbRef, "Userlist/" + name)).then((snapshot) =>{
+                if (snapshot.exists()) {
+                    console.log("User exists in Userlist");
+                    if (snapshot.val().score5 <= score) {
+                        console.log("Updating score:", snapshot.val().score5, "to", score);
+                        update(ref(db, "Userlist/" + name), {
+                            score5: score
+                        }).then(() => console.log("Score updated"))
+                        .catch(error => console.error("Error updating score:", error));
                     } else {
-                        console.error("User does not exist in Userlist");
+                        console.log("Score is not less than or equal to", score);
                     }
-                }).catch(error => console.error("Error getting Userlist:", error));
-            }
+                } else {
+                    console.error("User does not exist in Userlist");
+                }
+            }).catch(error => console.error("Error getting Userlist:", error));
+        }  
         </script>
     </body>
 </html>
