@@ -1,20 +1,20 @@
-Project Name: ClearanceGames
-Teammates: Clarence and Kai Quan
-Parts done: Clarence: games, homepage, highscore, Lottie, socials
-Kaiquan: API, feedback, login and register, homepage + highscore as well
+#Project Name: ClearanceGames
+##Teammates: Clarence and Kai Quan
+##Parts done: Clarence: games, homepage, highscore, Lottie, socials
+##Kaiquan: API, feedback, login and register, homepage + highscore as well
 Our website is called Clearance Games and its a website that plays host to a variety of games, from single-player and multiplayer, to games that train your hand eye coordination and thinking games. In other words, its a gaming website aimed at children and people who enjoy playing games. Some of the games that this website has includes TicTacToe which is multiplayer, Brain Teaser which stimulates your brain, and even Flappy Ball, which is a game thats similar to Flappy Bird. Clearance Games also has a login and signup system, in which one would have to sign up to record their highscores of each game. This way, users can compare scores with their friends and see who's the best among them all. Some other excellent features of this mobile friendly website include the unique navigation bar, the carefully crafted colour combinations, a highscore page where users can see their highscores for each game, and even a feedback page where our website's users can feedback about our website and even clarify any doubts they have!
-Design Process:
+##Design Process:
 This website is designed for children, teenagers, young adults, and anyone who is into games. We think that our audience would want to go to a website where they can relax and have fun while playing games, feel at home, and even compete with each other. Thus, this inspired the designing of our website. One such example is the background of some of the pages, one of which is the homepage. As you can see, the homepage is related to gaming. Our games will also provide our target audience with a way to relieve their stress and escape the modern world as they dive into the variety of games our website holds. Furthermore, the multiplayer games can provide our audience with a way to face each other, thus helping our target audience achieve their goal of having a website where they can feel at home.
-Here are some User Stories:
+##Here are some User Stories:
 
 - As a young child, i would want to play some exciting games like Flappy Ball, that way I can be preoccupied for the next hour.
 - As a working adult who likes games, i would want to escape my day to day life and relieve some stress from working morning till night, hence i would want to play some games on Clearance Games.
 - As a teenager with a twin brother, i want to settle a debate between me and him about who is the best at Tic Tac Toe, hence i will go to Clearance Games website and play the game called tictactoe as it is a multiplayer game and it keeps track of score. This way my brother and i can determine who is better at TicTacToe.
 
-Adobe XD share link:
+##Adobe XD share link:
 
-Features:
-Existing Features:
+#Features:
+##Existing Features:
 
 1. Navigation Bar: allows users to easily move around all the different pages within the website with ease, so as to make the website more user friendly and improve our user's experience.
 2. Scroll down button in homepage: allows users to choose which category they want of games: single player and multiplayer. once the user clicks on the button, the website will automatically scroll down to the part of the website that talks more about that category of games. this also makes the website more user friendly and also imrpoves our user's experience by removing the need to scroll all the way manually.
@@ -32,19 +32,19 @@ Existing Features:
 14. login and sign up system: allows users to create or login to an existing account, this way scores can be kept for each user and that way they can also have highscores if they have played the game.
 15. Lottie page when clicking on socials: shows user a loading page when they click on any of the social links, improves user experience
 
-Features left to implement:
+##Features left to implement:
 
 1. more games: create more games so as to increase the variety of games that we have, this way we can touch into a wider target audience
 2. leaderboard feature: displays the top 3 scores for each game and also display the username of these top 3 scorers, so as to give other players a target they can try to hit
 
-Technologies used:
+##Technologies used:
 
 1. the basic languages, html, CSS, JS
 2. Firebase: similar to restDB, basically API. used to store details like username, password, score for games that can record scores
 3. jquery, json and bootstrap
 4. Lottie: used to improve user experience, make website more visually appealing
 
-Testing:
+##Testing:
 Most scenarios have been tested and can be seen in the video demonstration. However, here are some common scenarios we feel our users may run into:
 
 1. Feedback form:
@@ -68,10 +68,10 @@ Most scenarios have been tested and can be seen in the video demonstration. Howe
 The project is mobile friendly for all the pages and is also friendly for different web browser size. Some of the pages are shown with different web browser size in the video. For example, when the browser size changes, the navbar will also change and when the size becomes small enough, the navbar will change to become jus three lines on the right and the logo on the left. When the three lines are clicked on, it'll open up the navigation bar, thus making our website more appealing.
 Multiple bugs were discovered upon developing the website. However, all could be fixed as they were most of the time either errors on our side or we simply forgot to add more attributes to prevent the bug. There was one interesting bug, which occured for 2 of our games, Stack Tower and Fall Ball. The error was that the original code involved location.reload() which reloads the page once the timer ran out. However when testing our website, we found out that this affects saving the score and didnt allow our code to save the score to Firebase. But, we dissolved a plan and decided to use a restart button that does location.reload() when clicked on, thus allowing our code to save the game's score.
 
-Credits:
-Content:
+##Credits:
+##Content:
 NIL
-Media:
+##Media:
 https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.pinterest.com%2Fgianglht2132003%2F&psig=AOvVaw1_8FLx6YOEByNCnty3TWoD&ust=1676125500483000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLC955mUi_0CFQAAAAAdAAAAABAE
 https://www.pinterest.com/pin/54324739226640180/
 https://www.freepik.com/premium-photo/old-vintage-black-brick-wall-background-with-gradient-light-surface_27684435.htm
@@ -97,11 +97,11 @@ https://en.wikipedia.org/wiki/File:Purplecom.jpg
 https://in.pinterest.com/pin/603623156286095923/
 https://cutewallpaper.org/22/chrome-dino-wallpapers/view-page-22.html
 https://www.digivid360.com/blog/video-production/how-to-create-videos-remotely/attachment/futuristic-sci-fi-concrete-room-with-glowing-neon-virtual-reality-portal-computer-video-games-vibrant-colors-laser-energy-source-blue-neon-lights/
-Acknowledgements:
+##Acknowledgements:
 We recieved inspiration from https://www.y8.com/ .
 We also recieved inspiration from Kai Quan's previous assignment for our footer.
 We also recieved inspiration from https://www.youtube.com/@KnifeCircus who's tutorials guided us when doing our games.
 
-Link to GitHub Page: https://github.com/clarencetan06/ID_ClearanceGames_Website
-Video link:
-Slides werent used for the video.
+##Link to GitHub Page: https://github.com/clarencetan06/ID_ClearanceGames_Website
+##Video link:
+##Slides werent used for the video.
