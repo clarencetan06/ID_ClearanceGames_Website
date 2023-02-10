@@ -62,22 +62,17 @@ body{
     background-image: url(images/falling/dark.jpg);
 }
 button{
-    /*font-size: 2rem;
+    font-size: 2rem;
     padding: 0.5rem 2rem;
     border: 3px solid black;
     border-radius: 0.3rem;
-    margin: 1rem auto;
-    display: block;*/
     display: flex;
     justify-content: center;
     align-items: center;
     height: 50px;
     width: 150px;
-    background-color: green;
-    color: white;
     border-radius: 25px;
     border: none;
-    font-size: 20px;
     margin: 0 auto;
 }
 #btn:hover, #restart:hover{
