@@ -186,10 +186,9 @@
                     console.error("Name is undefined");
                     return;
                 }
-
-                const dbRef = ref(db, "Userlist");
+                const dbRef = ref(db)
                 console.log(score, name);
-                get(child(dbRef, name)).then(snapshot => {
+                get(child(dbRef, "Userlist/" + name)).then((snapshot) =>{
                     if (snapshot.exists()) {
                         console.log("User exists in Userlist");
                         if (snapshot.val().score4 <= score) {
