@@ -9,7 +9,7 @@
     overflow-x: hidden;
 }
 .game{
-    border: 3px solid white;
+    border: 3px solid black;
     height: 600px;
     width: var(--fourhundred);
     margin: auto;
@@ -95,10 +95,10 @@ button:hover{
 }
 body{
     background-image: url(images/brickbeater/brick.jpg);
-	background-position: center top;
 	background-size: cover;
 }
-h1, p{
+h1, h4{
+    font-weight: bold;
     text-align: center;
-    color:aqua
+    color: black
 }
