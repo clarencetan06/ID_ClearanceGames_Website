@@ -4,7 +4,7 @@
 
 ## Parts done: Clarence: games, homepage, highscore, Lottie, socials
 
-## Kaiquan: API, feedback, login and register, homepage + highscore as well
+## Kaiquan: API, feedback, login and register, homepage + highscore as well, TicTacToe
 
 Our website is called Clearance Games and its a website that plays host to a variety of games, from single-player and multiplayer, to games that train your hand eye coordination and thinking games. In other words, its a gaming website aimed at children and people who enjoy playing games. Some of the games that this website has includes TicTacToe which is multiplayer, Brain Teaser which stimulates your brain, and even Flappy Ball, which is a game thats similar to Flappy Bird. Clearance Games also has a login and signup system, in which one would have to sign up to record their highscores of each game. This way, users can compare scores with their friends and see who's the best among them all. Some other excellent features of this mobile friendly website include the unique navigation bar, the carefully crafted colour combinations, a highscore page where users can see their highscores for each game, and even a feedback page where our website's users can feedback about our website and even clarify any doubts they have!
 
@@ -18,7 +18,9 @@ This website is designed for children, teenagers, young adults, and anyone who i
 - As a working adult who likes games, i would want to escape my day to day life and relieve some stress from working morning till night, hence i would want to play some games on Clearance Games.
 - As a teenager with a twin brother, i want to settle a debate between me and him about who is the best at Tic Tac Toe, hence i will go to Clearance Games website and play the game called tictactoe as it is a multiplayer game and it keeps track of score. This way my brother and i can determine who is better at TicTacToe.
 
-## Adobe XD share link:
+## Adobe XD share link:(Wireframe is very basic layout of the website)
+
+https://xd.adobe.com/view/051dc2b3-2b8d-4ea7-99ad-97e5925335ba-504e/
 
 # Features:
 
@@ -117,8 +119,12 @@ https://www.digivid360.com/blog/video-production/how-to-create-videos-remotely/a
 2. We also recieved inspiration from Kai Quan's previous assignment for our footer.
 3. We also recieved inspiration from https://www.youtube.com/@KnifeCircus who's tutorials guided us when doing our games.
 
-## Link to GitHub Page: https://github.com/clarencetan06/ID_ClearanceGames_Website
+## Link to GitHub Page:
+
+https://github.com/clarencetan06/ID_ClearanceGames_Website
 
 ## Video link:
+
+https://drive.google.com/file/d/1uIUocwmFYjysCD9ep3MFvWZYgGlEVdVg/view?usp=sharing
 
 ## Slides werent used for the video.
